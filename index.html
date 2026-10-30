@@ -591,7 +591,11 @@ main{padding-bottom:var(--sec)}
   .foot-g>div:nth-child(n){grid-column:auto}
   .foot-g>div:first-child,.foot-g>div:nth-child(3){grid-column:1/-1}
   .foot{padding-bottom:120px}
-  .story,.story-x{display:none !important}
+  .story{width:68px !important;height:68px !important;aspect-ratio:1 !important;left:12px !important;right:auto !important;bottom:86px !important;border-radius:50% !important;padding:2px !important;overflow:hidden}
+  .story video{border-radius:50% !important}
+  .story .lv,.story .lab2{display:none !important}
+  .story .pl{width:26px;height:26px;margin:-13px 0 0 -13px;top:50%}
+  .story-x{left:62px !important;right:auto !important;bottom:140px !important;width:20px;height:20px}
   .story video{border-radius:10px}
   .story .lab2,.story .lv{display:none}
   .story .pl{width:30px;height:30px;margin:-15px 0 0 -15px;top:50%}
@@ -599,7 +603,7 @@ main{padding-bottom:var(--sec)}
   .exit-c{grid-template-columns:1fr}
   .exit-c>img{min-height:0;height:160px}
   .exit-c .t{padding:var(--s4)}
-  .mbar{display:grid;grid-template-columns:52px 52px 52px 1fr;gap:var(--s1);position:fixed;left:0;right:0;bottom:0;z-index:45;padding:var(--s2) var(--pad) calc(var(--s2) + env(safe-area-inset-bottom));background:rgba(5,5,5,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--border)}
+  .mbar{display:grid;grid-template-columns:52px 52px 1fr;gap:var(--s1);position:fixed;left:0;right:0;bottom:0;z-index:45;padding:var(--s2) var(--pad) calc(var(--s2) + env(safe-area-inset-bottom));background:rgba(5,5,5,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--border)}
   .mbar a{height:52px;border-radius:var(--r-sm);display:grid;place-items:center;box-shadow:inset 0 0 0 1px var(--border)}
   .mbar a.p{background:var(--gold);background-size:200% 100%;color:var(--on-accent);font-size:14px;font-weight:600;box-shadow:none}
 }
@@ -927,7 +931,7 @@ main{padding-bottom:var(--sec)}
 <div class="lb" id="lb" hidden><button class="lb-x" type="button" id="lbX" aria-label="Close"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button><button class="lb-b lb-p" type="button" id="lbP" aria-label="Previous"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button><img id="lbImg" src="img/r80.jpg" alt=""><button class="lb-b lb-n" type="button" id="lbN" aria-label="Next"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button><div class="lb-cap" id="lbCap"></div></div>
 <div class="exit" id="exit" hidden><div class="exit-c"><img src="img/r52.jpg" alt=""><div class="t"><h3>Get your bathroom price <span class="g">within 24 hours</span></h3><p>Text us 3 photos of your bathroom. We'll send a price and hold your 9% pre-season discount.</p><a class="btn" href="sms:+12164139816" id="exitGo">Text us photos</a></div><button class="exit-x" type="button" id="exitX" aria-label="Close"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div></div>
 
-<nav class="mbar" aria-label="Quick actions"><a href="tel:+12164139816" aria-label="Call"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></a><a href="sms:+12164139816" aria-label="Text us photos"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="m21 16-5-5-9 8"/></svg></a><a href="#" data-film aria-label="Meet the owner"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></a><a class="p" href="#quiz">Get My Price</a></nav>
+<nav class="mbar" aria-label="Quick actions"><a href="tel:+12164139816" aria-label="Call"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></a><a href="#" data-film aria-label="Meet the owner"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></a><a class="p" href="#quiz">Get My Price</a></nav>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
