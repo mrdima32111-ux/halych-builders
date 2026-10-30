@@ -473,6 +473,20 @@ main{padding-bottom:var(--sec)}
 .light .checks i{background:#F2C94C;color:#050505;border-radius:50%;flex-basis:22px;height:22px}
 .light .done li i{color:#050505}
 .light .cc.us .g,.light .cc.us .g .wi{background-image:linear-gradient(#F2C94C,#F2C94C);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+
+/* gallery on white */
+.gal-light .flt button{background:rgba(255,255,255,.92);color:#050505;box-shadow:inset 0 0 0 1px rgba(5,5,5,.12)}
+.gal-light .flt button b{color:#7A7A7A}
+.gal-light .flt button:hover{background:#F3F3F1}
+.gal-light .flt button.on{background:var(--gold);color:#0A0A0A;box-shadow:none}
+.gal-light .gi .cap b{color:#fff}
+.gal-light .gi .cap small{color:rgba(255,255,255,.75)}
+.gal-light .gi{background:#F3F3F1}
+.gal-light .zoom{background:#fff}
+.gal-light .zoom-next{padding-top:0}
+.zhead{position:absolute;left:0;right:0;bottom:6svh;z-index:4;opacity:0}
+.zhead .sh{margin-bottom:0}
+.gal-light + .light{border-top:1px solid rgba(5,5,5,.06)}
 /* ===== responsive ===== */
 @media (max-width:1180px){
   .hdr-in{grid-template-columns:auto 1fr}
@@ -732,8 +746,8 @@ main{padding-bottom:var(--sec)}
 </section>
 
 <!-- GALLERY -->
-<section id="gallery">
-  <div class="zoom" id="zoom">
+<section id="gallery" class="light gal-light">
+  <div class="zoom" id="zoom"><div class="zhead"><div class="wrap"><div class="sh"><div><h2>Оберіть стиль, <span class="g">а ціну порахуємо ми</span></h2></div><p class="lead">Відфільтруйте за типом, збережіть те, що подобається, і покажіть нам на виїзді. Будь-який з цих стилів зробимо у вашій ванній.</p></div></div></div>
     <div class="zg" id="zg">
       <div><img src="img/r04.jpg" alt=""></div>
       <div><img src="img/r86.jpg" alt=""></div>
@@ -747,9 +761,8 @@ main{padding-bottom:var(--sec)}
     </div>
 
   </div>
-  <div class="sec">
+  <div class="sec zoom-next">
     <div class="wrap">
-      <div class="sh"><div><h2 data-split>Оберіть стиль, <span class="g">а ціну порахуємо ми</span></h2></div><p class="lead rv">Відфільтруйте за типом, збережіть те, що подобається, і покажіть нам на виїзді. Будь-який з цих стилів зробимо у вашій ванній.</p></div>
       <div class="flt" id="flt"></div>
       <div class="gal" id="gal">
         <button class="gi" type="button" data-c="vanity dark"><img width="1200" height="1178" src="img/r80.jpg" alt="Темна ванна з круглим дзеркалом" loading="lazy"><span class="cap"><b>Графіт і арка</b><small>Тумби</small></span><span class="plus">+</span></button>
@@ -1081,12 +1094,16 @@ main{padding-bottom:var(--sec)}
 
   /* gallery zoom intro */
   var zcells = $$('#zg > div:not(.zc)');
-  gsap.timeline({ scrollTrigger: { trigger: '#zoom', start: 'top top', end: '+=80%', pin: true, scrub: .5, anticipatePin: 1 } })
-    .from('#zg', { scale: .7, duration: .3 }, 0)
-    .to('#zg', { scale: 3.42, duration: 1, ease: 'power2.inOut' }, .3)
-    .to('#zg div', { borderRadius: 0, duration: .5 }, 1)
-    .to(zcells, { opacity: 0, duration: .6 }, .7)
-    .to('#zg .zc img', { filter: 'brightness(.4)', duration: .3 }, 1.2);
+  var zdx = [-1, 0, 1, -1, 1, -1, 0, 1], zdy = [-1, -1, -1, 0, 0, 1, 1, 1];
+  gsap.timeline({ scrollTrigger: { trigger: '#zoom', start: 'top top', end: '+=120%', pin: true, scrub: 1.2, anticipatePin: 1 } })
+    .fromTo('#zg', { scale: .78 }, { scale: 1, duration: .35, ease: 'sine.out' }, 0)
+    .to('#zg', { scale: 3.42, duration: 1, ease: 'power3.inOut' }, .3)
+    .to(zcells, { opacity: 0, x: function(i){ return zdx[i] * 60; }, y: function(i){ return zdy[i] * 40; }, duration: .55, ease: 'power1.in', stagger: .02 }, .55)
+    .to('#zg .zc', { borderRadius: 0, duration: .4, ease: 'sine.inOut' }, .9)
+    .fromTo('#zg .zc img', { scale: 1 }, { scale: 1.08, duration: .6, ease: 'none' }, .8)
+    .to('#zg', { opacity: 0, duration: .3, ease: 'sine.inOut' }, 1.1)
+    .fromTo('.zhead', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: .3, ease: 'power2.out' }, 1.3)
+    .to({}, { duration: .15 });
 
   /* gallery items: reveal + gentle parallax */
   gsap.set(items, { clipPath: 'inset(100% 0 0 0 round 18px)' });
