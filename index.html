@@ -42,14 +42,14 @@ input{font:inherit}
 /* ===== 3. Type ===== */
 h1,h2,h3{margin:0;font-weight:500}
 h1{font-size:clamp(40px,28.7px + 3.005vw,72px);line-height:calc(1em + 4px);letter-spacing:-.045em;font-weight:600}
-h2{font-size:clamp(32px,26.4px + 1.502vw,48px);line-height:calc(1em + 6px);letter-spacing:-.035em}
+h2{font-size:clamp(28px,22px + 1.6vw,44px);line-height:1.12;letter-spacing:-.035em;font-weight:600}
 h3{font-size:clamp(22px,21.3px + .188vw,24px);line-height:calc(1em + 6px);letter-spacing:-.02em}
 .g,.g .wi{background-image:var(--gold);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;}
 .lead{font-size:18px;line-height:28px;color:var(--text-muted);max-width:60ch;margin:0}
 p{max-width:62ch}
 .cap{font-size:13px;line-height:19px;color:var(--text-muted)}
 .lab{display:inline-block;font-size:11px;line-height:16px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted)}
-.lab::before{content:'[ '}.lab::after{content:' ]'}
+
 .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.1em;margin-bottom:-.1em}
 .wi{display:inline-block}
 .ph{color:var(--text-muted);font-size:.9em;border:1px dashed var(--border);padding:0 6px;border-radius:6px;white-space:nowrap}
@@ -59,7 +59,7 @@ main{padding-bottom:var(--sec)}
 .sh{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap);align-items:end;margin-bottom:var(--head)}
 .sh>div:first-child{grid-column:1/8}
 .sh>:last-child:not(:first-child){grid-column:9/13;justify-self:start}
-.sh h2{margin-top:var(--s3)}
+.sh h2{margin-top:0}
 .line{border:0;border-top:1px solid var(--border);margin:0}
 
 /* ===== buttons ===== */
@@ -72,7 +72,7 @@ main{padding-bottom:var(--sec)}
 .btn-o:hover{background:rgba(255,255,255,.12);box-shadow:inset 0 0 0 1px rgba(255,255,255,.3)}
 
 /* ===== 4. Header ===== */
-.hdr{position:fixed;inset:0 0 auto;z-index:50;background:rgba(5,5,5,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.hdr{position:fixed;inset:0 0 auto;z-index:50;background:rgba(8,8,8,.55);backdrop-filter:saturate(1.6) blur(18px);-webkit-backdrop-filter:saturate(1.6) blur(18px);transition:background .35s,color .35s,border-color .35s;border-bottom:1px solid var(--border)}
 .hdr-in{height:var(--hdr);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:var(--s4)}
 .logo img{width:140px;height:auto}
 .menu{display:flex;gap:28px}
@@ -89,6 +89,13 @@ main{padding-bottom:var(--sec)}
 .mnav .btn{margin-top:auto;border:0;font-size:14px;letter-spacing:0;padding:0}
 .prog{position:fixed;left:0;top:0;height:2px;width:100%;background:var(--gold);transform-origin:left;transform:scaleX(0);z-index:60}
 
+
+.hdr.hl{background:rgba(255,255,255,.7);color:#050505;border-color:rgba(5,5,5,.08)}
+.hdr.hl .menu a{color:#5A5A5A}
+.hdr.hl .menu a:hover{color:#050505}
+.hdr.hl .tel small{color:#5A5A5A}
+.hdr.hl .burger{box-shadow:inset 0 0 0 1px rgba(5,5,5,.14)}
+.hdr.hl .ph{color:#5A5A5A;border-color:rgba(5,5,5,.2)}
 /* ===== hero ===== */
 .hero{padding:calc(var(--hdr) + var(--s6)) 0 0}
 .hero-g{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap);align-items:center}
@@ -154,6 +161,18 @@ main{padding-bottom:var(--sec)}
 .fly img:hover{transform:scale(1.03)}
 @keyframes flyUp{to{transform:translateY(-50%)}}
 @keyframes flyLeft{to{transform:translateX(-50%)}}
+
+/* hero v3: one family, clear hierarchy */
+.hero .kick{font-size:13px;line-height:19px;font-weight:500;color:var(--text-muted)}
+.hero h1{font-size:clamp(38px,26px + 3.2vw,68px);line-height:1.05;font-weight:600;letter-spacing:-.04em;margin-top:var(--s3);max-width:10.5ch}
+.hero-sub{font-size:17px;line-height:27px;font-weight:400;margin-top:var(--s4);max-width:46ch}
+.ctas .btn,.hero .btn{font-size:14px;font-weight:600}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:var(--s6);border:0;background:#F5F5F3;border-radius:12px;padding:var(--s2)}
+.st{display:flex;align-items:center;gap:var(--s2);padding:var(--s3);border-left:1px solid rgba(5,5,5,.08)}
+.st:first-child{border-left:0}
+.st i{flex:0 0 40px;height:40px;border-radius:10px;display:grid;place-items:center;background:#fff;color:#050505;box-shadow:0 1px 2px rgba(5,5,5,.06)}
+.st b{display:block;font-size:20px;line-height:26px;font-weight:600;letter-spacing:-.02em;color:#050505}
+.st small{display:block;font-size:13px;line-height:18px;color:var(--text-muted)}
 /* ===== quiz ===== */
 .qwrap{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap);padding:var(--s4);border-radius:var(--r-lg);background:var(--surface)}
 .qside{grid-column:1/6;position:relative;overflow:hidden;min-height:640px;border-radius:var(--r)}
@@ -269,7 +288,7 @@ main{padding-bottom:var(--sec)}
 .ce{border-radius:var(--r-lg);padding:var(--s7);background:var(--surface);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap);align-items:center}
 .ce>div:first-child{grid-column:1/7}
 .ce-s{grid-column:8/13;display:grid;gap:var(--s2)}
-.ce h2{margin-top:var(--s3)}
+.ce h2{margin-top:0}
 .ce p{margin:var(--s3) 0 var(--s5)}
 .ce-s div{display:flex;gap:var(--s3);align-items:center;padding:var(--s3) var(--s4) var(--s3) var(--s3);border-radius:var(--r);background:var(--surface-raised)}
 .ce-s span{flex:0 0 40px;height:40px;border-radius:50%;display:grid;place-items:center;box-shadow:inset 0 0 0 1px var(--border);font-size:14px;font-weight:600}
@@ -373,7 +392,7 @@ main{padding-bottom:var(--sec)}
 .fin>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .fin::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,5,5,.9) 0%,rgba(5,5,5,.55) 50%,rgba(5,5,5,.1) 100%)}
 .fin .in{position:relative;z-index:2;padding:var(--s7);max-width:680px}
-.fin h2{margin-top:var(--s3)}
+.fin h2{margin-top:0}
 .fin p{color:var(--text-muted);margin:var(--s3) 0 var(--s5)}
 .fin .ctas{margin-top:0}
 .foot{padding:var(--s8) 0 var(--s6)}
@@ -465,14 +484,25 @@ main{padding-bottom:var(--sec)}
   .price{max-width:none}
   .hba{aspect-ratio:4/4.4}
   .ctas .btn{flex:1 1 100%}
-  .stats{grid-template-columns:1fr 1fr;row-gap:0;margin-top:var(--s6)}
-  .st{padding:var(--s4) 0}
-  .st:nth-child(n+3){border-top:1px solid var(--border)}
+  .stats{grid-template-columns:1fr 1fr;margin-top:var(--s5);padding:var(--s1)}
+  .st{padding:var(--s2);border-left:0}
+  .st:nth-child(n+3){border-top:1px solid rgba(5,5,5,.08)}
+  .st:nth-child(2n){border-left:1px solid rgba(5,5,5,.08)}
+  .st i{flex-basis:34px;height:34px}
+  .st b{font-size:17px;line-height:22px}
+  .st small{font-size:12px;line-height:16px}
   .sh>div:first-child,.sh>:last-child:not(:first-child){grid-column:1/-1}
   .qwrap{padding:var(--s2)}
-  .qside{grid-column:1/-1;min-height:220px}
-  .qside .in{padding:var(--s3)}
-  .qside .big{font-size:32px;line-height:38px}
+  .qside{display:none}
+  .qz{grid-column:1/-1;padding:var(--s3) var(--s2)}
+  .pcards{grid-template-columns:1fr;gap:var(--s1)}
+  .pc{display:grid;grid-template-columns:76px 1fr;align-items:center;gap:var(--s3);padding:var(--s1);min-height:76px}
+  .pc img{aspect-ratio:1;border-radius:6px}
+  .pc>span:last-child{padding:0 40px 0 0;font-size:16px;line-height:22px}
+  .pc>span:last-child small{font-size:13px;line-height:18px}
+  .pc .ck{top:50%;right:var(--s3);margin-top:-14px}
+  .opts{grid-template-columns:1fr;gap:var(--s1)}
+  .sz{grid-template-columns:1fr 1fr}
   .perks{display:none}
   .qz{grid-column:1/-1;padding:var(--s2) var(--s2) var(--s3)}
   .pcards{gap:var(--s2)}
@@ -530,7 +560,7 @@ main{padding-bottom:var(--sec)}
   .foot-g>div:nth-child(n){grid-column:auto}
   .foot-g>div:first-child,.foot-g>div:nth-child(3){grid-column:1/-1}
   .foot{padding-bottom:120px}
-  .story{width:76px;right:var(--s2);bottom:88px;border-radius:12px}
+  .story,.story-x{display:none !important}
   .story video{border-radius:10px}
   .story .lab2,.story .lv{display:none}
   .story .pl{width:30px;height:30px;margin:-15px 0 0 -15px;top:50%}
@@ -538,7 +568,7 @@ main{padding-bottom:var(--sec)}
   .exit-c{grid-template-columns:1fr}
   .exit-c>img{min-height:0;height:160px}
   .exit-c .t{padding:var(--s4)}
-  .mbar{display:grid;grid-template-columns:52px 52px 1fr;gap:var(--s1);position:fixed;left:0;right:0;bottom:0;z-index:45;padding:var(--s2) var(--pad) calc(var(--s2) + env(safe-area-inset-bottom));background:rgba(5,5,5,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--border)}
+  .mbar{display:grid;grid-template-columns:52px 52px 52px 1fr;gap:var(--s1);position:fixed;left:0;right:0;bottom:0;z-index:45;padding:var(--s2) var(--pad) calc(var(--s2) + env(safe-area-inset-bottom));background:rgba(5,5,5,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--border)}
   .mbar a{height:52px;border-radius:var(--r-sm);display:grid;place-items:center;box-shadow:inset 0 0 0 1px var(--border)}
   .mbar a.p{background:var(--gold);background-size:200% 100%;color:var(--on-accent);font-size:14px;font-weight:600;box-shadow:none}
 }
@@ -568,15 +598,9 @@ main{padding-bottom:var(--sec)}
   <div class="wrap">
     <div class="hero-g">
       <div class="hero-l">
-        <p class="kick h-in"><i></i>Знижка 9% до початку сезону</p>
-        <h1 data-split>Ремонт ванної<br>під ключ<br>у&nbsp;Клівленді</h1>
-        <p class="price h-in"><small>Ціна від</small><b class="g">$8 000</b><span>фіксуємо письмово</span></p>
-        <p class="hero-sub h-in">Демонтаж, плитка, душ або ванна, тумба, сантехніка і світло. Одна своя бригада від огляду до готової кімнати.</p>
-        <ul class="checks h-in">
-          <li><i><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg></i>Безкоштовний виїзд і кошторис</li>
-          <li><i><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg></i>Гарантія на роботу 1 рік</li>
-          <li><i><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg></i>Розстрочка і оплата етапами</li>
-        </ul>
+        <p class="kick h-in"><i></i>Клівленд і передмістя · знижка 9% до початку сезону</p>
+        <h1 data-split>Ремонт ванної під&nbsp;ключ <span class="g">від&nbsp;$8&nbsp;000</span></h1>
+        <p class="hero-sub h-in">Демонтаж, плитка, душ або ванна, тумба і світло. Своя бригада, ціна і строки фіксуємо в договорі.</p>
         <div class="ctas h-in">
           <a class="btn" href="#quiz">Дізнатися ціну моєї ванної <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           <a class="btn btn-o" href="#" data-film><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg>Відео від власника</a>
@@ -587,11 +611,11 @@ main{padding-bottom:var(--sec)}
         <div class="fly" id="fly" aria-label="Ідеї дизайну ванних"><div class="col"><div class="trk"><img src="img/r65.jpg" width="1200" height="801" alt=""><img src="img/r04.jpg" width="1200" height="1500" alt=""><img src="img/g-walkin-black.jpg" width="1600" height="1067" alt=""><img src="img/r86.jpg" width="1067" height="1600" alt=""><img src="img/r12.jpg" width="987" height="1600" alt=""><img src="img/r72.jpg" width="1067" height="1600" alt=""><img src="img/g-freestanding.jpg" width="1600" height="1068" alt=""><img src="img/r31.jpg" width="1200" height="1599" alt=""><img src="img/r65.jpg" width="1200" height="801" alt=""><img src="img/r04.jpg" width="1200" height="1500" alt=""><img src="img/g-walkin-black.jpg" width="1600" height="1067" alt=""><img src="img/r86.jpg" width="1067" height="1600" alt=""><img src="img/r12.jpg" width="987" height="1600" alt=""><img src="img/r72.jpg" width="1067" height="1600" alt=""><img src="img/g-freestanding.jpg" width="1600" height="1068" alt=""><img src="img/r31.jpg" width="1200" height="1599" alt=""></div></div><div class="col"><div class="trk"><img src="img/r52.jpg" width="1200" height="900" alt=""><img src="img/r00.jpg" width="1200" height="1200" alt=""><img src="img/r25.jpg" width="1067" height="1600" alt=""><img src="img/g-subway-bench.jpg" width="1600" height="1067" alt=""><img src="img/r80.jpg" width="1200" height="1178" alt=""><img src="img/r63.jpg" width="1067" height="1600" alt=""><img src="img/r05.jpg" width="1200" height="1200" alt=""><img src="img/r45.jpg" width="1069" height="1600" alt=""><img src="img/r52.jpg" width="1200" height="900" alt=""><img src="img/r00.jpg" width="1200" height="1200" alt=""><img src="img/r25.jpg" width="1067" height="1600" alt=""><img src="img/g-subway-bench.jpg" width="1600" height="1067" alt=""><img src="img/r80.jpg" width="1200" height="1178" alt=""><img src="img/r63.jpg" width="1067" height="1600" alt=""><img src="img/r05.jpg" width="1200" height="1200" alt=""><img src="img/r45.jpg" width="1069" height="1600" alt=""></div></div><div class="col"><div class="trk"><img src="img/r33.jpg" width="1200" height="801" alt=""><img src="img/r14.jpg" width="1067" height="1600" alt=""><img src="img/g-double-vanity.jpg" width="1600" height="1067" alt=""><img src="img/r06.jpg" width="1067" height="1600" alt=""><img src="img/r17.jpg" width="1200" height="1200" alt=""><img src="img/g-marble-walkin.jpg" width="1600" height="1068" alt=""><img src="img/r23.jpg" width="1200" height="801" alt=""><img src="img/g-glass-shower.jpg" width="1600" height="1068" alt=""><img src="img/r33.jpg" width="1200" height="801" alt=""><img src="img/r14.jpg" width="1067" height="1600" alt=""><img src="img/g-double-vanity.jpg" width="1600" height="1067" alt=""><img src="img/r06.jpg" width="1067" height="1600" alt=""><img src="img/r17.jpg" width="1200" height="1200" alt=""><img src="img/g-marble-walkin.jpg" width="1600" height="1068" alt=""><img src="img/r23.jpg" width="1200" height="801" alt=""><img src="img/g-glass-shower.jpg" width="1600" height="1068" alt=""></div></div></div>
       </div>
     </div>
-    <div class="stats">
-      <div class="st"><b><span class="g">1</span> рік</b><small>гарантії на роботу</small></div>
-      <div class="st"><b><span class="g">24</span> год</b><small>ціна по 3 фото в SMS</small></div>
-      <div class="st"><b class="g">−9%</b><small>до початку сезону</small></div>
-      <div class="st"><b class="g">$0</b><small>виїзд і кошторис</small></div>
+    <div class="stats h-in">
+      <div class="st"><i><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></i><div><b>1 рік</b><small>гарантії на роботу</small></div></div>
+      <div class="st"><i><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></i><div><b>24 год</b><small>ціна по 3 фото в SMS</small></div></div>
+      <div class="st"><i><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 12 12 20l-8-8V4h8z"/><circle cx="8.5" cy="8.5" r="1.5"/></svg></i><div><b>−9%</b><small>до початку сезону</small></div></div>
+      <div class="st"><i><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/></svg></i><div><b>$0</b><small>виїзд і кошторис</small></div></div>
     </div>
   </div>
 </section>
@@ -599,7 +623,7 @@ main{padding-bottom:var(--sec)}
 <!-- QUIZ -->
 <section class="sec" id="quiz">
   <div class="wrap">
-    <div class="sh"><div><span class="lab rv">Калькулятор ціни</span><h2 data-split>Хочете знати ціну своєї ванної? <span class="g">Порахуйте за 40 секунд</span></h2></div><p class="lead rv">Відповідайте на 5 питань з фото. Вилку ціни побачите одразу, як залишите номер. Без зобов'язань.</p></div>
+    <div class="sh"><div><h2 data-split>Хочете знати ціну своєї ванної? <span class="g">Порахуйте за 40 секунд</span></h2></div><p class="lead rv">Відповідайте на 5 питань з фото. Вилку ціни побачите одразу, як залишите номер. Без зобов'язань.</p></div>
     <div class="qwrap rv">
       <div class="qside" id="qside">
         <img class="on" src="img/r65.jpg" alt="" data-k="def">
@@ -675,7 +699,7 @@ main{padding-bottom:var(--sec)}
 <!-- BEFORE / AFTER -->
 <section class="sec" id="ba">
   <div class="wrap">
-    <div class="sh"><div><span class="lab rv">До і після</span><h2 data-split>Сумніваєтесь, чи вийде гарно? <span class="g">Подивіться на ванні наших клієнтів</span></h2></div><p class="lead rv">Потягніть повзунок. «До» знято в перший день, «після» в день здачі. Це наші роботи в Клівленді.</p></div>
+    <div class="sh"><div><h2 data-split>Сумніваєтесь, чи вийде гарно? <span class="g">Подивіться на ванні наших клієнтів</span></h2></div><p class="lead rv">Потягніть повзунок. «До» знято в перший день, «після» в день здачі. Це наші роботи в Клівленді.</p></div>
     <div class="bas">
       <div class="bac rv">
         <div class="ba" id="ba0"><img src="img/b3-before.jpg" alt="До ремонту"><img class="af" src="img/b3-vanity.jpg" alt="Після ремонту"><span class="kn"></span><span class="tg l">До</span><span class="tg r">Після</span></div>
@@ -704,11 +728,11 @@ main{padding-bottom:var(--sec)}
       <div><img src="img/r52.jpg" alt=""></div>
       <div><img src="img/r12.jpg" alt=""></div>
     </div>
-    <div class="zt"><div class="box"><span class="lab">Галерея</span><h2 style="margin-top:12px">Ще не знаєте, який стиль обрати?</h2><p>Гортайте, тут 27 ідей</p></div></div>
+
   </div>
   <div class="sec">
     <div class="wrap">
-      <div class="sh"><div><span class="lab rv">Оберіть стиль</span><h2 data-split>Оберіть стиль, <span class="g">а ціну порахуємо ми</span></h2></div><p class="lead rv">Відфільтруйте за типом, збережіть те, що подобається, і покажіть нам на виїзді. Будь-який з цих стилів зробимо у вашій ванній.</p></div>
+      <div class="sh"><div><h2 data-split>Оберіть стиль, <span class="g">а ціну порахуємо ми</span></h2></div><p class="lead rv">Відфільтруйте за типом, збережіть те, що подобається, і покажіть нам на виїзді. Будь-який з цих стилів зробимо у вашій ванній.</p></div>
       <div class="flt" id="flt"></div>
       <div class="gal" id="gal">
         <button class="gi" type="button" data-c="vanity dark"><img width="1200" height="1178" src="img/r80.jpg" alt="Темна ванна з круглим дзеркалом" loading="lazy"><span class="cap"><b>Графіт і арка</b><small>Тумби</small></span><span class="plus">+</span></button>
@@ -739,7 +763,7 @@ main{padding-bottom:var(--sec)}
         <button class="gi" type="button" data-c="vanity light"><img width="1600" height="1068" src="img/g-gold-faucet.jpg" alt="Раковина на дерев'яній стільниці" loading="lazy"><span class="cap"><b>Латунь і дерево</b><small>Тумби</small></span><span class="plus">+</span></button>
         <button class="gi" type="button" data-c="vanity light"><img width="1600" height="1137" src="img/g-faucet.jpg" alt="Інтегрована раковина з каменю" loading="lazy"><span class="cap"><b>Кам'яна раковина</b><small>Тумби</small></span><span class="plus">+</span></button>
       </div>
-      <p class="gnote">Фото в галереї ідей ілюстративні, з відкритих джерел. Наші роботи дивіться в блоці «До і після» та в Instagram.</p>
+      <p class="gnote">Фото в галереї ідей ілюстративні, з відкритих джерел. Наші роботи дивіться в блоці «До і після» і у відеовідгуках.</p>
       <div class="gcta rv"><b>Сподобався стиль? <span class="g">Дізнайтеся, скільки він коштуватиме у вашій ванній</span></b><a class="btn" href="#quiz">Дізнатися ціну <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
     </div>
   </div>
@@ -748,7 +772,7 @@ main{padding-bottom:var(--sec)}
 <!-- COMPARE (light block) -->
 <section class="sec light" id="cmp">
   <div class="wrap">
-    <div class="sh"><div><span class="lab rv">Порівняйте</span><h2 data-split>Порівнюєте підрядників? <span class="g">Ось різниця, яку відчуєте на ремонті</span></h2></div><p class="lead rv">Шість речей, через які ремонт ванної найчастіше йде не за планом, і як це зроблено у нас.</p></div>
+    <div class="sh"><div><h2 data-split>Порівнюєте підрядників? <span class="g">Ось різниця, яку відчуєте на ремонті</span></h2></div><p class="lead rv">Шість речей, через які ремонт ванної найчастіше йде не за планом, і як це зроблено у нас.</p></div>
     <div class="cmp">
       <div class="cc them" id="ccThem">
         <h3>Типовий підрядник</h3>
@@ -781,7 +805,7 @@ main{padding-bottom:var(--sec)}
   <div class="wrap">
     <div class="ce rv">
       <div>
-        <span class="lab">Вже маєте кошторис?</span>
+        
         <h2>Вже маєте кошторис або порівнюєте ціни? <span class="g">Надішліть його нам, і ми зробимо дешевше</span></h2>
         <p class="lead">Сфотографуйте кошторис іншого підрядника і киньте в SMS. Безкоштовно перевіримо, скажемо, чого в ньому бракує, і запропонуємо той самий обсяг робіт за нижчою ціною.</p>
         <a class="btn" href="sms:+12164139816">Надіслати кошторис в SMS <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -798,17 +822,17 @@ main{padding-bottom:var(--sec)}
 <!-- PROCESS: road with a van -->
 <section class="sec" id="how">
   <div class="wrap">
-    <div class="sh"><div><span class="lab rv">Як ми працюємо</span><h2 data-split>Не знаєте, з чого почати? <span class="g">Ось як пройде ваш ремонт</span></h2></div><p class="lead rv">Шість кроків від першого дзвінка до готової ванної. На кожному етапі надсилаємо фото прогресу.</p></div>
+    <div class="sh"><div><h2 data-split>Не знаєте, з чого почати? <span class="g">Ось як пройде ваш ремонт</span></h2></div><p class="lead rv">Шість кроків від першого дзвінка до готової ванної. На кожному етапі надсилаємо фото прогресу.</p></div>
     <div class="road" id="road">
       <div class="rd"><i id="rdFill"></i></div>
       <div class="van" id="van"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 16V7a1 1 0 0 1 1-1h11v10"/><path d="M14 9h4l3 4v3h-2"/><path d="M8 16h6"/><circle cx="6" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M14 13h7"/></svg></div>
       <div id="steps">
         <div class="stp"><span class="dot">1</span><div class="sc"><span class="d">День 1</span><h3>Заявка</h3><p>Пройдіть квіз, подзвоніть або надішліть 3 фото ванної в SMS. Зв'яжемось у зручний для вас час.</p></div></div>
-        <div class="stp"><span class="dot">2</span><div class="sc"><span class="d">День 2–3</span><h3>Виїзд і заміри</h3><p>Приїжджаємо, міряємо, слухаємо, що хочете змінити, і допомагаємо обрати матеріали під бюджет.</p></div></div>
-        <div class="stp"><span class="dot">3</span><div class="sc"><span class="d"><span class="ph">[день]</span></span><h3>Кошторис і договір</h3><p>Ціна письмово і по пунктах. Дати старту і завершення в договорі.</p></div></div>
-        <div class="stp"><span class="dot">4</span><div class="sc"><span class="d"><span class="ph">[дні]</span></span><h3>Демонтаж</h3><p>Захищаємо підлогу і прохід, розбираємо стару ванну до основи, вивозимо сміття.</p></div></div>
-        <div class="stp"><span class="dot">5</span><div class="sc"><span class="d"><span class="ph">[дні]</span></span><h3>Ремонт</h3><p>Гідроізоляція, плитка, душ або ванна, тумба, сантехніка і світло. Прибираємо щодня.</p></div></div>
-        <div class="stp"><span class="dot">6</span><div class="sc"><span class="d"><span class="ph">[день]</span></span><h3>Здача</h3><p>Разом обходимо готову ванну і приймаємо роботу. Діє гарантія 1 рік.</p></div></div>
+        <div class="stp"><span class="dot">2</span><div class="sc"><span class="d">1–3 дні після заявки</span><h3>Виїзд і заміри</h3><p>Приїжджаємо, міряємо, слухаємо, що хочете змінити, і допомагаємо обрати матеріали під бюджет.</p></div></div>
+        <div class="stp"><span class="dot">3</span><div class="sc"><span class="d">До 5 днів</span><h3>Кошторис і договір</h3><p>Ціна письмово і по пунктах. Дати старту і завершення в договорі.</p></div></div>
+        <div class="stp"><span class="dot">4</span><div class="sc"><span class="d">1–2 дні</span><h3>Демонтаж</h3><p>Захищаємо підлогу і прохід, розбираємо стару ванну до основи, вивозимо сміття.</p></div></div>
+        <div class="stp"><span class="dot">5</span><div class="sc"><span class="d">2–3 тижні</span><h3>Ремонт</h3><p>Гідроізоляція, плитка, душ або ванна, тумба, сантехніка і світло. Прибираємо щодня.</p></div></div>
+        <div class="stp"><span class="dot">6</span><div class="sc"><span class="d">Останній день</span><h3>Здача</h3><p>Разом обходимо готову ванну і приймаємо роботу. Діє гарантія 1 рік.</p></div></div>
       </div>
       <div class="fin-pin"><i><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></i><b>Ваша нова ванна</b><small>Клівленд, Огайо</small></div>
     </div>
@@ -824,7 +848,7 @@ main{padding-bottom:var(--sec)}
 <!-- REVIEWS (light block) -->
 <section class="sec light" id="reviews">
   <div class="wrap">
-    <div class="sh"><div><span class="lab rv">Відгуки</span><h2 data-split>Хочете знати, які ми в роботі? <span class="g">Спитайте наших клієнтів</span></h2></div><div class="rv-top rv"><span class="sc">[X.X]</span><div><div class="stars">★★★★★</div><small style="color:var(--imut)">Google, підтягнеться автоматично</small></div></div></div>
+    <div class="sh"><div><h2 data-split>Хочете знати, які ми в роботі? <span class="g">Спитайте наших клієнтів</span></h2></div><div class="rv-top rv"><span class="sc">[X.X]</span><div><div class="stars">★★★★★</div><small style="color:var(--imut)">Google, підтягнеться автоматично</small></div></div></div>
     <div class="vrs">
       <button class="vr rv" type="button" data-film data-src="vid/rev-chris.mp4" data-poster="img/rev-chris.jpg"><img src="img/rev-chris.jpg" alt="Відеовідгук клієнта Кріса" loading="lazy"><span class="pl"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></span><span class="vn"><b>Кріс</b><small>Відеовідгук · 2:34</small></span></button>
       <button class="vr rv" type="button" data-film data-src="vid/rev-2.mp4" data-poster="img/rev-2.jpg"><img src="img/rev-2.jpg" alt="Відеовідгук клієнта" loading="lazy"><span class="pl"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></span><span class="vn"><b>Клієнт <span class="ph">[ім'я]</span></b><small>Відеовідгук · 1:11</small></span></button>
@@ -839,31 +863,16 @@ main{padding-bottom:var(--sec)}
   </div>
 </section>
 
-<!-- INSTAGRAM -->
-<section class="sec">
-  <div class="wrap">
-    <div class="sh"><div class="igh rv"><span class="igav"><span><img src="img/logo.png" alt=""></span></span><div><span class="lab">Більше робіт в Instagram</span><h2 style="margin-top:4px">@halychbuilders</h2></div></div><a class="btn btn-o rv" href="https://www.instagram.com/halychbuilders/" target="_blank" rel="noopener">Підписатися</a></div>
-    <div class="ig" id="ig">
-      <a href="https://www.instagram.com/halychbuilders/" target="_blank" rel="noopener" aria-label="Пост в Instagram"><img width="720" height="900" src="img/ig-1.jpg" alt="" loading="lazy"></a>
-      <a href="https://www.instagram.com/halychbuilders/" target="_blank" rel="noopener" aria-label="Пост в Instagram"><img width="384" height="480" src="img/igr-trust.jpg" alt="" loading="lazy"></a>
-      <a href="https://www.instagram.com/halychbuilders/" target="_blank" rel="noopener" aria-label="Пост в Instagram"><img width="720" height="900" src="img/ig-2.jpg" alt="" loading="lazy"></a>
-      <a href="https://www.instagram.com/halychbuilders/" target="_blank" rel="noopener" aria-label="Пост в Instagram"><img width="720" height="900" src="img/ig-6.jpg" alt="" loading="lazy"></a>
-      <a href="https://www.instagram.com/halychbuilders/" target="_blank" rel="noopener" aria-label="Пост в Instagram"><img width="299" height="480" src="img/igr-client.jpg" alt="" loading="lazy"></a>
-      <a href="https://www.instagram.com/halychbuilders/" target="_blank" rel="noopener" aria-label="Пост в Instagram"><img width="720" height="900" src="img/ig-7.jpg" alt="" loading="lazy"></a>
-    </div>
-  </div>
-</section>
-
 <!-- FAQ -->
 <section class="sec light" id="faq">
   <div class="wrap faq">
-    <div><span class="lab rv">Питання</span><h2 data-split>Залишились питання? <span class="g">Ось відповіді на найчастіші</span></h2><p class="lead rv" style="margin:16px 0 0">Не знайшли свого? Подзвоніть або напишіть SMS, відповімо сьогодні.</p><div class="consult rv"><img src="img/owner.jpg" alt="Власник Halych Builders" loading="lazy"><div class="t"><b>Безкоштовна консультація</b><small>Відповімо на питання і назвемо орієнтовну ціну</small><a class="btn btn-o" href="tel:+12164139816">(216) 413-9816</a></div></div></div>
+    <div><h2 data-split>Залишились питання? <span class="g">Ось відповіді на найчастіші</span></h2><p class="lead rv" style="margin:16px 0 0">Не знайшли свого? Подзвоніть або напишіть SMS, відповімо сьогодні.</p><div class="consult rv"><img src="img/owner.jpg" alt="Власник Halych Builders" loading="lazy"><div class="t"><b>Безкоштовна консультація</b><small>Відповімо на питання і назвемо орієнтовну ціну</small><a class="btn btn-o" href="tel:+12164139816">(216) 413-9816</a></div></div></div>
     <div id="faqs">
       <div class="q on"><button type="button" aria-expanded="true">Скільки коштує ремонт ванної?<span class="pm"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg></span></button><div class="a"><div><p>Від $8 000. Точна ціна залежить від розміру, матеріалів і обсягу робіт. Пройдіть квіз або надішліть 3 фото в SMS, і ми назвемо вилку ціни.</p></div></div></div>
       <div class="q"><button type="button" aria-expanded="false">Чи є розстрочка?<span class="pm"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg></span></button><div class="a"><div><p>Так, є розстрочка і оплата етапами. <span class="ph">[Умови уточнити]</span></p></div></div></div>
       <div class="q"><button type="button" aria-expanded="false">Яка гарантія?<span class="pm"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg></span></button><div class="a"><div><p>1 рік гарантії на всю виконану роботу.</p></div></div></div>
       <div class="q"><button type="button" aria-expanded="false">Чи може ціна змінитися в процесі?<span class="pm"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg></span></button><div class="a"><div><p>Ціна фіксується письмово. Будь-які доплати тільки з вашого погодження.</p></div></div></div>
-      <div class="q"><button type="button" aria-expanded="false">Скільки триває ремонт?<span class="pm"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg></span></button><div class="a"><div><p>Дати старту і завершення прописуємо в договорі. <span class="ph">[Типові строки уточнити]</span></p></div></div></div>
+      <div class="q"><button type="button" aria-expanded="false">Скільки триває ремонт?<span class="pm"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg></span></button><div class="a"><div><p>Зазвичай 3–4 тижні від договору до здачі, залежно від обсягу. Дати старту і завершення прописуємо в договорі.</p></div></div></div>
       <div class="q"><button type="button" aria-expanded="false">У мене вже є кошторис іншого підрядника<span class="pm"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg></span></button><div class="a"><div><p>Надішліть його в SMS. Перевіримо безкоштовно і запропонуємо той самий обсяг робіт дешевше.</p></div></div></div>
     </div>
   </div>
@@ -873,7 +882,7 @@ main{padding-bottom:var(--sec)}
 <div class="wrap sec"><section class="fin" id="fin">
   <img src="img/r33.jpg" alt="">
   <div class="in">
-    <span class="lab">−9% до початку сезону</span>
+    
     <h2 data-split>Готові до нової ванної? <span class="g">Дізнайтеся ціну сьогодні</span></h2>
     <p>Квіз займе менше хвилини. Або просто надішліть 3 фото в SMS.</p>
     <div class="ctas"><a class="btn" href="#quiz">Пройти квіз <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn btn-o" href="sms:+12164139816">Фото в SMS</a></div>
@@ -899,9 +908,9 @@ main{padding-bottom:var(--sec)}
 
 <div class="modal" id="modal" hidden><button class="modal-x" type="button" id="modalX" aria-label="Закрити"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button><div class="modal-v"><video id="modalV" src="vid/film.mp4" poster="img/owner.jpg" playsinline controls preload="none"></video></div></div>
 <div class="lb" id="lb" hidden><button class="lb-x" type="button" id="lbX" aria-label="Закрити"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button><button class="lb-b lb-p" type="button" id="lbP" aria-label="Попереднє"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button><img id="lbImg" src="img/r80.jpg" alt=""><button class="lb-b lb-n" type="button" id="lbN" aria-label="Наступне"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button><div class="lb-cap" id="lbCap"></div></div>
-<div class="exit" id="exit" hidden><div class="exit-c"><img src="img/r52.jpg" alt=""><div class="t"><span class="lab">Поки ви не пішли</span><h3>Дізнайтеся ціну своєї ванної <span class="g">за 24 години</span></h3><p>Надішліть 3 фото ванної в SMS. Порахуємо ціну і нагадаємо про знижку 9% до початку сезону.</p><a class="btn" href="sms:+12164139816" id="exitGo">Надіслати фото в SMS</a></div><button class="exit-x" type="button" id="exitX" aria-label="Закрити"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div></div>
+<div class="exit" id="exit" hidden><div class="exit-c"><img src="img/r52.jpg" alt=""><div class="t"><h3>Дізнайтеся ціну своєї ванної <span class="g">за 24 години</span></h3><p>Надішліть 3 фото ванної в SMS. Порахуємо ціну і нагадаємо про знижку 9% до початку сезону.</p><a class="btn" href="sms:+12164139816" id="exitGo">Надіслати фото в SMS</a></div><button class="exit-x" type="button" id="exitX" aria-label="Закрити"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div></div>
 
-<nav class="mbar" aria-label="Швидкі дії"><a href="tel:+12164139816" aria-label="Подзвонити"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></a><a href="sms:+12164139816" aria-label="Фото в SMS"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="m21 16-5-5-9 8"/></svg></a><a class="p" href="#quiz">Дізнатися ціну</a></nav>
+<nav class="mbar" aria-label="Швидкі дії"><a href="tel:+12164139816" aria-label="Подзвонити"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></a><a href="sms:+12164139816" aria-label="Фото в SMS"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="m21 16-5-5-9 8"/></svg></a><a href="#" data-film aria-label="Відео від власника"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></a><a class="p" href="#quiz">Дізнатися ціну</a></nav>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -919,9 +928,9 @@ main{padding-bottom:var(--sec)}
   function words(src, into){
     Array.prototype.slice.call(src.childNodes).forEach(function(n){
       if (n.nodeType === 3){
-        n.textContent.split(/(\s+)/).forEach(function(w){
+        n.textContent.split(/([ \t\n\r]+)/).forEach(function(w){
           if (!w) return;
-          if (/^\s+$/.test(w)){ into.appendChild(document.createTextNode(' ')); return; }
+          if (/^[ \t\n\r]+$/.test(w)){ into.appendChild(document.createTextNode(' ')); return; }
           var o = document.createElement('span'); o.className = 'w'; var i = document.createElement('span'); i.className = 'wi'; i.textContent = w; o.appendChild(i); into.appendChild(o);
         });
       } else if (n.nodeType === 1){ var c = n.cloneNode(false); into.appendChild(c); words(n, c); }
@@ -931,7 +940,7 @@ main{padding-bottom:var(--sec)}
 
   /* header, menu, progress, story */
   var hdr = $('#hdr');
-  function onS(){ hdr.classList.toggle('solid', scrollY > 30); var away = scrollY < innerHeight * .7; ['#story','#storyX'].forEach(function(s){ $(s).classList.toggle('away', away); }); var h = document.documentElement.scrollHeight - innerHeight; $('#prog').style.transform = 'scaleX(' + (h > 0 ? scrollY / h : 0) + ')'; }
+  var lights = $$('.light'); function onS(){ var y = 40, hl = lights.some(function(l){ var r = l.getBoundingClientRect(); return r.top <= y && r.bottom >= y; }); hdr.classList.toggle('hl', hl); var away = scrollY < innerHeight * .7; ['#story','#storyX'].forEach(function(s){ $(s).classList.toggle('away', away); }); var h = document.documentElement.scrollHeight - innerHeight; $('#prog').style.transform = 'scaleX(' + (h > 0 ? scrollY / h : 0) + ')'; }
   addEventListener('scroll', onS, { passive: true }); onS();
   var mnav = $('#mnav');
   $('#burger').addEventListener('click', function(){ mnav.hidden = !mnav.hidden; if (A && !mnav.hidden) gsap.from('#mnav a', { y: 30, opacity: 0, stagger: .05, duration: .6, ease: 'expo.out' }); });
@@ -1055,14 +1064,12 @@ main{padding-bottom:var(--sec)}
 
   /* gallery zoom intro */
   var zcells = $$('#zg > div:not(.zc)');
-  gsap.timeline({ scrollTrigger: { trigger: '#zoom', start: 'top top', end: '+=160%', pin: true, scrub: .6, anticipatePin: 1 } })
-    .from('#zg', { scale: .62, duration: .5 }, 0)
-    .to('#zg', { scale: 3.42, duration: 1, ease: 'power2.in' }, .5)
+  gsap.timeline({ scrollTrigger: { trigger: '#zoom', start: 'top top', end: '+=80%', pin: true, scrub: .5, anticipatePin: 1 } })
+    .from('#zg', { scale: .7, duration: .3 }, 0)
+    .to('#zg', { scale: 3.42, duration: 1, ease: 'power2.inOut' }, .3)
     .to('#zg div', { borderRadius: 0, duration: .5 }, 1)
     .to(zcells, { opacity: 0, duration: .6 }, .7)
-    .to('.zt', { opacity: 0, y: -40, duration: .5 }, .85)
     .to('#zg .zc img', { filter: 'brightness(.4)', duration: .3 }, 1.2);
-  gsap.from('.zt .box', { y: 60, opacity: 0, duration: 1.1, ease: 'expo.out', scrollTrigger: { trigger: '#zoom', start: 'top 70%' } });
 
   /* gallery items: reveal + gentle parallax */
   gsap.set(items, { clipPath: 'inset(100% 0 0 0 round 18px)' });
@@ -1092,10 +1099,6 @@ main{padding-bottom:var(--sec)}
   gsap.from('.rc', { y: 80, opacity: 0, duration: 1.1, stagger: .12, ease: 'expo.out', scrollTrigger: { trigger: '.rvs', start: 'top 85%' } });
 
   /* instagram: tiles reveal, columns drift */
-  $$('#ig a').forEach(function(a, i){
-    gsap.from(a, { y: 60, opacity: 0, duration: 1.1, ease: 'expo.out', delay: (i % 3) * .1, scrollTrigger: { trigger: a, start: 'top 92%' } });
-    if (!mob) gsap.fromTo(a, { yPercent: [6, 14, 8][i % 3] }, { yPercent: [-4, -12, -6][i % 3], ease: 'none', scrollTrigger: { trigger: '#ig', start: 'top bottom', end: 'bottom top', scrub: true } });
-  });
 
 
   /* faq rows */
