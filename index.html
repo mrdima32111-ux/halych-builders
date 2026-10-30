@@ -173,6 +173,31 @@ main{padding-bottom:var(--sec)}
 .st i{flex:0 0 40px;height:40px;border-radius:10px;display:grid;place-items:center;background:#fff;color:#050505;box-shadow:0 1px 2px rgba(5,5,5,.06)}
 .st b{display:block;font-size:20px;line-height:26px;font-weight:600;letter-spacing:-.02em;color:#050505}
 .st small{display:block;font-size:13px;line-height:18px;color:var(--text-muted)}
+
+/* hero v4: centered tub with a water stream */
+.hero.light{padding:calc(var(--hdr) + var(--s6)) 0 0;min-height:0;overflow:visible}
+.hero-c{display:flex;flex-direction:column;align-items:center;text-align:center}
+.hero-c .kick{justify-content:center}
+.hero-c h1{max-width:14ch;margin-inline:auto}
+.hero-c .hero-sub{margin-inline:auto;max-width:52ch}
+.hero-c .ctas{justify-content:center;margin-top:var(--s5)}
+.chips-row{list-style:none;padding:0;margin:var(--s4) 0 0;display:flex;flex-wrap:wrap;justify-content:center;gap:var(--s1) var(--s4);font-size:13px;line-height:19px;color:var(--text-muted)}
+.chips-row li{display:flex;align-items:center;gap:6px}
+.chips-row li+li::before{content:'';width:4px;height:4px;border-radius:50%;background:#D0D0CC;margin-right:var(--s3)}
+.chips-row b{color:#050505;font-weight:600}
+.tub{position:relative;width:min(880px,100%);margin-top:var(--s4)}
+.tub img{width:100%;height:auto;display:block}
+.tub-fx{position:absolute;left:50%;top:21%;bottom:0;width:2.4%;transform:translateX(-50%);background:repeating-linear-gradient(180deg,rgba(255,255,255,0) 0 14px,rgba(255,255,255,.85) 14px 18px,rgba(255,255,255,0) 18px 34px);background-size:100% 34px;mix-blend-mode:screen;opacity:.7;animation:fall .5s linear infinite;-webkit-mask-image:linear-gradient(transparent,#000 12%);mask-image:linear-gradient(transparent,#000 12%);border-radius:40%}
+@keyframes fall{to{background-position:0 34px}}
+/* the stream that flows down the page */
+main{position:relative}
+.flow{position:absolute;left:0;top:0;width:100%;pointer-events:none;z-index:3;overflow:visible}
+.flow .base{fill:none;stroke:url(#wg);stroke-width:6;stroke-linecap:round;filter:url(#wglow)}
+.flow .hi{fill:none;stroke:rgba(255,255,255,.95);stroke-width:2;stroke-linecap:round;stroke-dasharray:3 26;animation:run .9s linear infinite}
+@keyframes run{to{stroke-dashoffset:-29}}
+.flow .node{fill:#fff;stroke:#7CC4F0;stroke-width:2;transition:fill .4s,r .4s}
+.flow .node.on{fill:#7CC4F0}
+.flow .drop{fill:#BFE6FF;filter:url(#wglow)}
 /* ===== quiz ===== */
 .qwrap{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap);padding:var(--s4);border-radius:var(--r-lg);background:var(--surface)}
 .qside{grid-column:1/6;position:relative;overflow:hidden;min-height:640px;border-radius:var(--r)}
@@ -477,6 +502,11 @@ main{padding-bottom:var(--sec)}
   .fly{display:flex;flex-direction:column;gap:10px;height:auto;min-height:0;margin-inline:calc(var(--pad) * -1);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
   .fly .col:nth-child(3){display:none}
   .hero-r{order:-1;margin:0 0 var(--s5)}
+  .hero.light{padding-top:calc(var(--hdr) + var(--s5))}
+  .chips-row{gap:6px 14px}
+  .chips-row li+li::before{display:none}
+  .tub{width:calc(100% + 24px);margin-inline:-12px}
+  .flow .base{stroke-width:5}
   .hero .wrap>.hero-g{padding-top:0}
   .fly .trk{flex-direction:row;width:max-content;animation-name:flyLeft;animation-duration:60s}
   .fly .col:nth-child(2) .trk{animation-duration:70s}
@@ -592,31 +622,26 @@ main{padding-bottom:var(--sec)}
 <nav class="mnav" id="mnav" hidden><a href="#quiz">Дізнатися ціну</a><a href="#ba">До і після</a><a href="#gallery">Галерея</a><a href="#how">Як працюємо</a><a href="#reviews">Відгуки</a><a href="#faq">Питання</a><a class="btn" href="tel:+12164139816">(216) 413-9816</a></nav>
 
 <main id="top">
+<svg class="flow" id="flow" aria-hidden="true"><defs>
+<linearGradient id="wg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9BD3F5"/><stop offset=".5" stop-color="#E8F6FF"/><stop offset="1" stop-color="#7CC4F0"/></linearGradient>
+<filter id="wglow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<mask id="wm" maskUnits="userSpaceOnUse"><path id="wmP" fill="none" stroke="#fff" stroke-width="40" stroke-linecap="round"/></mask>
+</defs><g mask="url(#wm)"><path class="base" id="wP"/><path class="hi" id="wH"/></g><g id="wNodes"></g><circle class="drop" id="wD" r="6"/></svg>
 
 <!-- HERO -->
 <section class="hero light" id="hero">
-  <div class="wrap">
-    <div class="hero-g">
-      <div class="hero-l">
-        <p class="kick h-in"><i></i>Клівленд і передмістя · знижка 9% до початку сезону</p>
-        <h1 data-split>Ремонт ванної під&nbsp;ключ <span class="g">від&nbsp;$8&nbsp;000</span></h1>
-        <p class="hero-sub h-in">Демонтаж, плитка, душ або ванна, тумба і світло. Своя бригада, ціна і строки фіксуємо в договорі.</p>
-        <div class="ctas h-in">
-          <a class="btn" href="#quiz">Дізнатися ціну моєї ванної <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          <a class="btn btn-o" href="#" data-film><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg>Відео від власника</a>
-        </div>
-        <p class="smsl h-in">Або надішліть 3 фото ванної в <a href="sms:+12164139816">SMS</a>, і ми назвемо ціну за 24 години.</p>
-      </div>
-      <div class="hero-r">
-        <div class="fly" id="fly" aria-label="Ідеї дизайну ванних"><div class="col"><div class="trk"><img src="img/r65.jpg" width="1200" height="801" alt=""><img src="img/r04.jpg" width="1200" height="1500" alt=""><img src="img/g-walkin-black.jpg" width="1600" height="1067" alt=""><img src="img/r86.jpg" width="1067" height="1600" alt=""><img src="img/r12.jpg" width="987" height="1600" alt=""><img src="img/r72.jpg" width="1067" height="1600" alt=""><img src="img/g-freestanding.jpg" width="1600" height="1068" alt=""><img src="img/r31.jpg" width="1200" height="1599" alt=""><img src="img/r65.jpg" width="1200" height="801" alt=""><img src="img/r04.jpg" width="1200" height="1500" alt=""><img src="img/g-walkin-black.jpg" width="1600" height="1067" alt=""><img src="img/r86.jpg" width="1067" height="1600" alt=""><img src="img/r12.jpg" width="987" height="1600" alt=""><img src="img/r72.jpg" width="1067" height="1600" alt=""><img src="img/g-freestanding.jpg" width="1600" height="1068" alt=""><img src="img/r31.jpg" width="1200" height="1599" alt=""></div></div><div class="col"><div class="trk"><img src="img/r52.jpg" width="1200" height="900" alt=""><img src="img/r00.jpg" width="1200" height="1200" alt=""><img src="img/r25.jpg" width="1067" height="1600" alt=""><img src="img/g-subway-bench.jpg" width="1600" height="1067" alt=""><img src="img/r80.jpg" width="1200" height="1178" alt=""><img src="img/r63.jpg" width="1067" height="1600" alt=""><img src="img/r05.jpg" width="1200" height="1200" alt=""><img src="img/r45.jpg" width="1069" height="1600" alt=""><img src="img/r52.jpg" width="1200" height="900" alt=""><img src="img/r00.jpg" width="1200" height="1200" alt=""><img src="img/r25.jpg" width="1067" height="1600" alt=""><img src="img/g-subway-bench.jpg" width="1600" height="1067" alt=""><img src="img/r80.jpg" width="1200" height="1178" alt=""><img src="img/r63.jpg" width="1067" height="1600" alt=""><img src="img/r05.jpg" width="1200" height="1200" alt=""><img src="img/r45.jpg" width="1069" height="1600" alt=""></div></div><div class="col"><div class="trk"><img src="img/r33.jpg" width="1200" height="801" alt=""><img src="img/r14.jpg" width="1067" height="1600" alt=""><img src="img/g-double-vanity.jpg" width="1600" height="1067" alt=""><img src="img/r06.jpg" width="1067" height="1600" alt=""><img src="img/r17.jpg" width="1200" height="1200" alt=""><img src="img/g-marble-walkin.jpg" width="1600" height="1068" alt=""><img src="img/r23.jpg" width="1200" height="801" alt=""><img src="img/g-glass-shower.jpg" width="1600" height="1068" alt=""><img src="img/r33.jpg" width="1200" height="801" alt=""><img src="img/r14.jpg" width="1067" height="1600" alt=""><img src="img/g-double-vanity.jpg" width="1600" height="1067" alt=""><img src="img/r06.jpg" width="1067" height="1600" alt=""><img src="img/r17.jpg" width="1200" height="1200" alt=""><img src="img/g-marble-walkin.jpg" width="1600" height="1068" alt=""><img src="img/r23.jpg" width="1200" height="801" alt=""><img src="img/g-glass-shower.jpg" width="1600" height="1068" alt=""></div></div></div>
-      </div>
+  <div class="wrap hero-c">
+    <p class="kick h-in"><i></i>Клівленд і передмістя · знижка 9% до початку сезону</p>
+    <h1 data-split>Ремонт ванної під&nbsp;ключ <span class="g">від&nbsp;$8&nbsp;000</span></h1>
+    <p class="hero-sub h-in">Демонтаж, плитка, душ або ванна, тумба і світло. Своя бригада, ціна і строки фіксуємо в договорі.</p>
+    <div class="ctas h-in">
+      <a class="btn" href="#quiz">Дізнатися ціну моєї ванної <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn-o" href="#" data-film><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg>Відео від власника</a>
     </div>
-    <div class="stats h-in">
-      <div class="st"><i><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></i><div><b>1 рік</b><small>гарантії на роботу</small></div></div>
-      <div class="st"><i><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></i><div><b>24 год</b><small>ціна по 3 фото в SMS</small></div></div>
-      <div class="st"><i><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 12 12 20l-8-8V4h8z"/><circle cx="8.5" cy="8.5" r="1.5"/></svg></i><div><b>−9%</b><small>до початку сезону</small></div></div>
-      <div class="st"><i><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/></svg></i><div><b>$0</b><small>виїзд і кошторис</small></div></div>
-    </div>
+    <ul class="chips-row h-in">
+      <li><b>1 рік</b> гарантії</li><li><b>24 год</b> ціна по фото</li><li><b>−9%</b> до сезону</li><li><b>$0</b> виїзд і кошторис</li>
+    </ul>
+    <div class="tub" id="tub"><img src="img/tub.jpg" width="1104" height="602" alt="Ванна, з якої тече вода"><span class="tub-fx"></span></div>
   </div>
 </section>
 
@@ -1037,6 +1062,46 @@ main{padding-bottom:var(--sec)}
   /* faq */
   $$('#faqs .q').forEach(function(q){ q.querySelector('button').addEventListener('click', function(){ var on = q.classList.contains('on'); $$('#faqs .q').forEach(function(x){ x.classList.remove('on'); x.querySelector('button').setAttribute('aria-expanded','false'); }); if (!on){ q.classList.add('on'); q.querySelector('button').setAttribute('aria-expanded','true'); } if (G) setTimeout(function(){ ScrollTrigger.refresh(); }, 500); }); });
 
+
+  /* water stream from the tub that follows the scroll */
+  (function(){
+    var svg = $('#flow'), P = $('#wP'), H = $('#wH'), M = $('#wmP'), D = $('#wD'), NG = $('#wNodes'), mainEl = $('main');
+    if (!svg) return;
+    var L = 0, lut = [], nodes = [];
+    function build(){
+      var mr = mainEl.getBoundingClientRect(), top = mr.top + scrollY, W = mainEl.clientWidth, H0 = mainEl.scrollHeight;
+      svg.setAttribute('height', H0); svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H0);
+      var t = $('#tub').getBoundingClientRect(), sx = t.left + t.width / 2, sy = t.bottom + scrollY - top - 2;
+      var wrap = Math.min(1280, W - 2 * parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--pad'))), gx = Math.max(10, (W - wrap) / 4);
+      var heads = $$('main > section:not(.hero) h2, #gallery .sh h2, .fin h2').filter(function(h){ return h.offsetParent; });
+      var ys = heads.map(function(h){ return h.getBoundingClientRect().top + scrollY - top + 12; }).sort(function(a,b){ return a - b; });
+      var y1 = sy + 70, y2 = Math.max(y1 + 140, (ys[0] || y1 + 260) - 80);
+      var d = 'M' + sx + ' ' + sy + ' L' + sx + ' ' + y1 + ' C' + sx + ' ' + (y1 + 90) + ' ' + gx + ' ' + (y2 - 90) + ' ' + gx + ' ' + y2;
+      var endY = H0 - 40, last = y2, side = 1;
+      ys.forEach(function(y){ if (y <= last + 40) return; var my = (last + y) / 2; d += ' C' + (gx + 10 * side) + ' ' + (last + (my - last) * .6) + ' ' + (gx + 10 * side) + ' ' + (y - (y - my) * .6) + ' ' + gx + ' ' + y; last = y; side = -side; });
+      if (endY > last) d += ' L' + gx + ' ' + endY;
+      P.setAttribute('d', d); H.setAttribute('d', d); M.setAttribute('d', d);
+      L = P.getTotalLength(); lut = [];
+      for (var l = 0; l <= L; l += 6){ lut.push([l, P.getPointAtLength(l).y]); }
+      M.style.strokeDasharray = L + ' ' + L;
+      NG.innerHTML = ''; nodes = ys.filter(function(y){ return y > y2 - 1; }).map(function(y){ var c = document.createElementNS('http://www.w3.org/2000/svg', 'circle'); c.setAttribute('class', 'node'); c.setAttribute('cx', gx); c.setAttribute('cy', y); c.setAttribute('r', 5); NG.appendChild(c); return { el: c, y: y }; });
+      svg.dataset.top = top; draw();
+    }
+    function draw(){
+      if (!L) return;
+      var top = +svg.dataset.top, target = scrollY + innerHeight * .72 - top, len = 0;
+      for (var i = 0; i < lut.length; i++){ if (lut[i][1] > target){ break; } len = lut[i][0]; }
+      len = Math.max(len, 60);
+      M.style.strokeDashoffset = (L - len);
+      var pt = P.getPointAtLength(len); D.setAttribute('cx', pt.x); D.setAttribute('cy', pt.y);
+      nodes.forEach(function(n){ n.el.classList.toggle('on', n.y <= pt.y + 2); });
+    }
+    addEventListener('scroll', draw, { passive: true });
+    addEventListener('resize', function(){ clearTimeout(build.t); build.t = setTimeout(build, 200); });
+    addEventListener('load', build);
+    if (G) ScrollTrigger.addEventListener('refresh', build);
+    setTimeout(build, 300);
+  })();
   var stps = $$('#steps .stp');
   if (!A){ stps.forEach(function(s){ s.classList.add('on'); }); return; }
 
@@ -1045,9 +1110,9 @@ main{padding-bottom:var(--sec)}
   /* hero intro */
   gsap.from('.hero h1 .wi', { yPercent: 110, duration: 1.1, stagger: .05, ease: 'expo.out', delay: .1 });
   gsap.from('.h-in', { y: 30, opacity: 0, duration: 1, stagger: .08, ease: 'expo.out', delay: .4 });
-  gsap.from('#fly .col', { y: 120, opacity: 0, duration: 1.6, stagger: .15, ease: 'expo.out', delay: .2 });
+  gsap.from('#tub', { y: 60, opacity: 0, duration: 1.6, ease: 'expo.out', delay: .3 });
   gsap.from('.st', { y: 40, opacity: 0, duration: .9, stagger: .08, ease: 'expo.out', delay: .8 });
-  if (!mob) gsap.to('#fly', { yPercent: -8, ease: 'none', scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true } });
+
 
   /* headings: words rise in */
   $$('[data-split]').forEach(function(el){ if (el.closest('.hero')) return; gsap.from(el.querySelectorAll('.wi'), { yPercent: 110, duration: 1, stagger: .045, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 88%' } }); });
