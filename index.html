@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Halych Builders | Bathroom Remodeling in Cleveland</title>
-<meta name="description" content="Full bathroom remodels in Cleveland from $8,000. Get your price in 40 seconds and save 9% before the season starts.">
+<meta name="description" content="Full bathroom remodels in Cleveland from $8,000. Get your price in 40 seconds and save 9% on contracts signed by November 30.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -487,6 +487,22 @@ main{padding-bottom:var(--sec)}
 .zhead{position:absolute;left:0;right:0;bottom:6svh;z-index:4;opacity:0}
 .zhead .sh{margin-bottom:0}
 .gal-light + .light{border-top:1px solid rgba(5,5,5,.06)}
+
+/* case study */
+.case{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:var(--gap);margin-top:var(--gap);padding:var(--s1);border-radius:var(--r-lg);background:var(--surface)}
+.case-g{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:var(--s1)}
+.cg{position:relative;margin:0;border-radius:var(--r);overflow:hidden;background:#111}
+.cg img{width:100%;height:100%;object-fit:cover;display:block}
+.cg.big{aspect-ratio:4/5}
+.cg:not(.big){aspect-ratio:4/3}
+.cg figcaption{position:absolute;top:var(--s2);left:var(--s2);font-size:12px;font-weight:600;padding:4px 10px;border-radius:6px;background:rgba(5,5,5,.72);color:#fff}
+.case-t{padding:var(--s4) var(--s4) var(--s4) var(--s2);display:flex;flex-direction:column}
+.case-k{font-size:11px;line-height:16px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted)}
+.case-t h3{margin-top:var(--s2)}
+.case-t p{color:var(--text-muted);margin:var(--s2) 0 0}
+.case-t .done{margin-top:var(--s4)}
+.case-t .case-r{color:var(--text);margin-top:var(--s4)}
+.nostory .story,.nostory .story-x{opacity:0 !important;pointer-events:none !important;transform:scale(.6) !important}
 /* ===== responsive ===== */
 @media (max-width:1180px){
   .rvs{grid-template-columns:repeat(2,1fr)}
@@ -545,6 +561,8 @@ main{padding-bottom:var(--sec)}
   .fgrid{grid-template-columns:1fr}
   .qz-nav .btn{flex:1;margin-left:var(--s3)}
   .bas,.cmp,.rvs{grid-template-columns:1fr}
+  .case{grid-template-columns:1fr}
+  .case-t{padding:var(--s3) var(--s2) var(--s3)}
   .vrs{grid-template-columns:1fr 1fr}
   .bac .tx{padding:var(--s4) var(--s3) var(--s3)}
   .bacta .btn{width:100%}
@@ -634,7 +652,7 @@ main{padding-bottom:var(--sec)}
   <div class="wrap">
     <div class="hero-g">
       <div class="hero-l">
-        <p class="kick h-in"><i></i>Cleveland &amp; suburbs · 9% off before peak season</p>
+        <p class="kick h-in"><i></i>Cleveland, OH · 9% off contracts signed by Nov 30</p>
         <h1 data-split>Full bathroom remodels <span class="g">from&nbsp;$8,000</span></h1>
         <p class="hero-sub h-in">Demo, tile, shower or tub, vanity and lighting. Our own crew, with your price and timeline locked in writing.</p>
         <div class="ctas h-in">
@@ -650,7 +668,7 @@ main{padding-bottom:var(--sec)}
     <div class="stats h-in">
       <div class="st"><i><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></i><div><b>1 year</b><small>workmanship warranty</small></div></div>
       <div class="st"><i><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></i><div><b>24 hrs</b><small>price from 3 texted photos</small></div></div>
-      <div class="st"><i><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 12 12 20l-8-8V4h8z"/><circle cx="8.5" cy="8.5" r="1.5"/></svg></i><div><b>−9%</b><small>before peak season</small></div></div>
+      <div class="st"><i><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 12 12 20l-8-8V4h8z"/><circle cx="8.5" cy="8.5" r="1.5"/></svg></i><div><b>−9%</b><small>if you sign by Nov 30</small></div></div>
       <div class="st"><i><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/></svg></i><div><b>$0</b><small>in-home visit &amp; quote</small></div></div>
     </div>
   </div>
@@ -672,7 +690,7 @@ main{padding-bottom:var(--sec)}
         <img src="img/r52.jpg" alt="" data-k="Spa lighting">
         <div class="in">
           <span class="big" id="qBig">01<small> / 05</small></span>
-          <ul class="perks"><li>Price range right away</li><li>No obligation</li><li>9% off before peak season</li></ul>
+          <ul class="perks"><li>Price range right away</li><li>No obligation</li><li>9% off if you sign by Nov 30</li></ul>
           <div class="chips" id="chips"></div>
         </div>
       </div>
@@ -701,7 +719,7 @@ main{padding-bottom:var(--sec)}
           <button class="pc" type="button" data-k="style" data-v="Spa lighting"><img src="img/r52.jpg" alt=""><span class="ck">✓</span><span>Spa lighting<small>Niches, warm LED glow</small></span></button>
         </div></div>
 
-        <div class="qs" data-s="3" hidden><h3>When do you want to start?</h3><p class="hint">The 9% discount ends when peak season starts</p><div class="opts">
+        <div class="qs" data-s="3" hidden><h3>When do you want to start?</h3><p class="hint">Sign by November 30 and save 9% on labor and materials</p><div class="opts">
           <button class="opt" type="button" data-k="when" data-v="ASAP"><b>ASAP</b><small>Ready to go</small></button>
           <button class="opt" type="button" data-k="when" data-v="In 1–3 months"><b>In 1–3 months</b><small>Planning ahead</small></button>
           <button class="opt" type="button" data-k="when" data-v="Later"><b>Later</b><small>No rush</small></button>
@@ -722,7 +740,7 @@ main{padding-bottom:var(--sec)}
           <span class="lab">Your estimated price</span>
           <div class="rng" id="rng">$[X] – $[Y]</div>
           <p style="color:var(--mut);margin:0 0 18px;max-width:460px" id="resTxt">We'll confirm the exact price after a free in-home visit.</p>
-          <span class="disc">9% off before peak season</span>
+          <span class="disc">9% off if you sign by Nov 30</span>
           
         </div></div>
 
@@ -746,6 +764,30 @@ main{padding-bottom:var(--sec)}
         <div class="tx"><h3>From dated stall to frameless glass shower</h3><p>The high-curb stall is gone. The shower feels open and bright.</p><ul class="done"><li><i>✓</i>Removed the old stall and tile</li><li><i>✓</i>Marble-look tile floor to ceiling</li><li><i>✓</i>Frameless glass and a built-in niche</li></ul></div>
       </div>
     </div>
+    <article class="case rv">
+      <div class="case-g">
+        <figure class="cg big"><img src="img/c3-shower.jpg" alt="New walk-in shower with two niches and a sliding glass door" loading="lazy"><figcaption>After</figcaption></figure>
+        <figure class="cg big"><img src="img/c3-vanity.jpg" alt="New vanity, mirror, lighting and three wall shelves" loading="lazy"><figcaption>After</figcaption></figure>
+        <figure class="cg"><img src="img/c3-rough.jpg" alt="Rebuilt walls with niche openings during the remodel" loading="lazy"><figcaption>Rebuild</figcaption></figure>
+        <figure class="cg"><img src="img/c3-tile.jpg" alt="Subway tile and niches going in" loading="lazy"><figcaption>Tile</figcaption></figure>
+      </div>
+      <div class="case-t">
+        <span class="case-k">Case study · Cleveland, OH</span>
+        <h3>From a worn-out bathroom to a walk-in shower</h3>
+        <p>This bathroom needed more than a cosmetic update. The old tub, vanity and finishes were worn out, the plumbing was leaking, and there were signs of mold, mildew and rot. The homeowners wanted to swap the bathtub for a walk-in shower and renovate the entire space.</p>
+        <p>We removed the old fixtures and damaged materials, replaced the plumbing, and rebuilt the bathroom with new finishes throughout.</p>
+        <ul class="done">
+          <li><i>✓</i>Replaced the bathtub with a fully tiled walk-in shower</li>
+          <li><i>✓</i>New shower door and two built-in shower niches</li>
+          <li><i>✓</i>Replaced the plumbing and repaired the leaks</li>
+          <li><i>✓</i>New vanity, toilet and flooring</li>
+          <li><i>✓</i>New drywall and baseboards</li>
+          <li><i>✓</i>Fresh wall texture and a repainted ceiling</li>
+          <li><i>✓</i>New mirror, lighting and three wall shelves</li>
+        </ul>
+        <p class="case-r"><b>The result:</b> a completely renovated bathroom with a walk-in shower, updated plumbing, new fixtures and practical storage.</p>
+      </div>
+    </article>
     <div class="bacta rv"><a class="btn" href="#quiz">I want this too <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
   </div>
 </section>
@@ -856,7 +898,7 @@ main{padding-bottom:var(--sec)}
         <div class="stp"><span class="dot">5</span><div class="sc"><span class="d">2–3 weeks</span><h3>Build</h3><p>Waterproofing, tile, shower or tub, vanity, plumbing and lighting. We clean up every day.</p></div></div>
         <div class="stp"><span class="dot">6</span><div class="sc"><span class="d">Final day</span><h3>Walkthrough</h3><p>We walk through the finished bathroom together. Your 1-year warranty starts.</p></div></div>
       </div>
-      <div class="fin-pin"><i><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></i><b>Your new bathroom</b><small>Cleveland, Ohio</small></div>
+      <div class="fin-pin"><i><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></i><b>Your new bathroom</b><small>Cleveland, OH</small></div>
     </div>
     <div class="gu">
       <div class="rv"><i><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 7h18v10H3z"/><path d="M3 12h18"/></svg></i><b>Pay in stages</b><small>as the work gets done</small></div>
@@ -870,12 +912,12 @@ main{padding-bottom:var(--sec)}
 <!-- REVIEWS (light block) -->
 <section class="sec light" id="reviews">
   <div class="wrap">
-    <div class="sh"><div><h2 data-split>Want to know what we're like to work with? <span class="g">Ask our clients</span></h2></div><div class="rv-top rv"><span class="sc">50+</span><div><div class="stars">★★★★★</div><small style="color:var(--imut)">projects completed in the Cleveland area</small></div></div></div>
+    <div class="sh"><div><h2 data-split>Want to know what we're like to work with? <span class="g">Ask our clients</span></h2></div><div class="rv-top rv"><span class="sc">50+</span><div><div class="stars">★★★★★</div><small style="color:var(--imut)">projects completed in Cleveland</small></div></div></div>
     <div class="vrs">
       <button class="vr rv" type="button" data-film data-src="vid/rev-chris.mp4" data-poster="img/rev-chris.jpg"><img src="img/rev-chris.jpg" alt="Video review from Chris" loading="lazy"><span class="pl"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></span><span class="vn"><b>Chris</b><small>Video review · 2:34</small></span></button>
       <button class="vr rv" type="button" data-film data-src="vid/rev-2.mp4" data-poster="img/rev-2.jpg"><img src="img/rev-2.jpg" alt="Client video review" loading="lazy"><span class="pl"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></span><span class="vn"><b>Homeowner, Cleveland</b><small>Video review · 1:11</small></span></button>
-      <button class="vr rv" type="button" data-film data-src="vid/rev-3.mp4" data-poster="img/rev-3.jpg"><img src="img/rev-3.jpg" alt="Client video review" loading="lazy"><span class="pl"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></span><span class="vn"><b>Homeowner, Cleveland area</b><small>Video review · 2:13</small></span></button>
-      <button class="vr rv" type="button" data-film data-src="vid/rev-4.mp4" data-poster="img/rev-4.jpg"><img src="img/rev-4.jpg" alt="Client video review" loading="lazy"><span class="pl"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></span><span class="vn"><b>Homeowner, Ohio</b><small>Video review · 0:44</small></span></button>
+      <button class="vr rv" type="button" data-film data-src="vid/rev-3.mp4" data-poster="img/rev-3.jpg"><img src="img/rev-3.jpg" alt="Client video review" loading="lazy"><span class="pl"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></span><span class="vn"><b>Homeowner, Cleveland</b><small>Video review · 2:13</small></span></button>
+      <button class="vr rv" type="button" data-film data-src="vid/rev-4.mp4" data-poster="img/rev-4.jpg"><img src="img/rev-4.jpg" alt="Client video review" loading="lazy"><span class="pl"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></span><span class="vn"><b>Homeowner, Cleveland</b><small>Video review · 0:44</small></span></button>
     </div>
     <div class="rvs">
       <div class="rc"><div class="stars">★★★★★</div><p>“Dima was very responsive through the quoting process all the way to delivery. Very professional and high quality work with good value.”</p><div class="who"><span class="av">P</span><div><b>Peter Punwani</b><small>Halych Builders client</small></div></div></div>
@@ -892,6 +934,7 @@ main{padding-bottom:var(--sec)}
     <div><h2 data-split>Still have questions? <span class="g">Here are the common ones</span></h2><p class="lead rv" style="margin:16px 0 0">Don't see yours? Call or text, and we'll answer today.</p><div class="consult rv"><img src="img/owner.jpg" alt="Halych Builders owner" loading="lazy"><div class="t"><b>Free consultation</b><small>We'll answer your questions and give you a ballpark price</small><a class="btn btn-o" href="tel:+12164139816">(216) 413-9816</a></div></div></div>
     <div id="faqs">
       <div class="q on"><button type="button" aria-expanded="true">How much does a bathroom remodel cost?<span class="pm"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg></span></button><div class="a"><div><p>From $8,000. The exact price depends on size, materials and scope. Take the quiz or text us 3 photos and we'll give you a price range.</p></div></div></div>
+      <div class="q"><button type="button" aria-expanded="false">How does the 9% discount work?<span class="pm"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg></span></button><div class="a"><div><p>Sign your remodel contract by November 30 and we take 9% off the total price for labor and materials. The work itself can start later, on the date we agree in the contract.</p></div></div></div>
       <div class="q"><button type="button" aria-expanded="false">Do you offer financing?<span class="pm"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg></span></button><div class="a"><div><p>Yes. You can pay in stages as the work gets done, or spread the cost into monthly payments through our financing partner (subject to approval). Ask us for options during your free visit.</p></div></div></div>
       <div class="q"><button type="button" aria-expanded="false">What warranty do you give?<span class="pm"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg></span></button><div class="a"><div><p>A 1-year warranty on all workmanship.</p></div></div></div>
       <div class="q"><button type="button" aria-expanded="false">Can the price change along the way?<span class="pm"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg></span></button><div class="a"><div><p>Your price is locked in writing. Any extras happen only with your approval.</p></div></div></div>
@@ -917,7 +960,7 @@ main{padding-bottom:var(--sec)}
 <footer class="foot">
   <div class="wrap">
     <div class="foot-g">
-      <div><img src="img/logo.png" alt="Halych Builders" style="height:54px;width:auto"><p style="margin:14px 0 0;max-width:320px;color:var(--mut)">Full bathroom remodeling in Cleveland and the suburbs.</p></div>
+      <div><img src="img/logo.png" alt="Halych Builders" style="height:54px;width:auto"><p style="margin:14px 0 0;max-width:320px;color:var(--mut)">Full bathroom remodeling in Cleveland, OH.</p></div>
       <div><h4>Phone</h4><a class="big" href="tel:+12164139816">(216) 413-9816</a><br><a href="tel:+15187099447" style="color:var(--text-muted)">(518) 709-9447</a></div>
       <div><h4>Email</h4><span style="user-select:all">sales@halychbuilders.com</span></div>
       <div><h4>Social</h4><a href="https://www.instagram.com/halychbuilders/" target="_blank" rel="noopener">Instagram</a></div>
@@ -931,7 +974,7 @@ main{padding-bottom:var(--sec)}
 
 <div class="modal" id="modal" hidden><button class="modal-x" type="button" id="modalX" aria-label="Close"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button><div class="modal-v"><video id="modalV" src="vid/film.mp4" poster="img/owner.jpg" playsinline controls preload="none"></video></div></div>
 <div class="lb" id="lb" hidden><button class="lb-x" type="button" id="lbX" aria-label="Close"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button><button class="lb-b lb-p" type="button" id="lbP" aria-label="Previous"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button><img id="lbImg" src="img/r80.jpg" alt=""><button class="lb-b lb-n" type="button" id="lbN" aria-label="Next"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button><div class="lb-cap" id="lbCap"></div></div>
-<div class="exit" id="exit" hidden><div class="exit-c"><img src="img/r52.jpg" alt=""><div class="t"><h3>Get your bathroom price <span class="g">within 24 hours</span></h3><p>Text us 3 photos of your bathroom. We'll send a price and hold your 9% pre-season discount.</p><a class="btn" href="sms:+12164139816" id="exitGo">Text us photos</a></div><button class="exit-x" type="button" id="exitX" aria-label="Close"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div></div>
+<div class="exit" id="exit" hidden><div class="exit-c"><img src="img/r52.jpg" alt=""><div class="t"><h3>Get your bathroom price <span class="g">within 24 hours</span></h3><p>Text us 3 photos of your bathroom. We'll send a price and hold your 9% discount for contracts signed by November 30.</p><a class="btn" href="sms:+12164139816" id="exitGo">Text us photos</a></div><button class="exit-x" type="button" id="exitX" aria-label="Close"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div></div>
 
 <nav class="mbar" aria-label="Quick actions"><a href="tel:+12164139816" aria-label="Call"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></a><a href="#" data-film aria-label="Meet the owner"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></a><a class="p" href="#quiz">Get My Price</a></nav>
 
@@ -970,6 +1013,11 @@ main{padding-bottom:var(--sec)}
   $$('#mnav a').forEach(function(a){ a.addEventListener('click', function(){ mnav.hidden = true; }); });
   $$('a[href^="#"]').forEach(function(a){ a.addEventListener('click', function(e){ var id = a.getAttribute('href'); if (id.length < 2) return; var t = document.querySelector(id); if (!t) return; e.preventDefault(); t.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); }); });
 
+  /* video widget steps aside near forms and key buttons */
+  (function(){ var zones = ['#quiz', '#ce', '#fin', '.bacta', '.gcta'].map(function(q){ return document.querySelector(q); }).filter(Boolean), on = new Set();
+    if (!('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) on.add(e.target); else on.delete(e.target); }); document.body.classList.toggle('nostory', on.size > 0); }, { rootMargin: '-10% 0px -10% 0px' });
+    zones.forEach(function(z){ io.observe(z); }); })();
   /* film */
   var modal = $('#modal'), mv = $('#modalV'), story = $('#story');
   function openF(e){ if (e) e.preventDefault(); var src = (this && this.getAttribute && this.getAttribute('data-src')) || 'vid/film.mp4', pos = (this && this.getAttribute && this.getAttribute('data-poster')) || 'img/owner.jpg'; if (mv.getAttribute('src') !== src){ mv.setAttribute('poster', pos); mv.setAttribute('src', src); } modal.hidden = false; try { mv.currentTime = 0; var p = mv.play(); if (p && p.catch) p.catch(function(){}); } catch(err){} }
