@@ -1209,8 +1209,8 @@ src="https://www.facebook.com/tr?id=1275246754532481&ev=PageView&noscript=1"
 <script>
 /* Leads (Google Sheet + Telegram) and Meta Pixel conversions */
 (function(){
-  var LEAD_URL = '__LEAD_URL__';
-  function fb(ev, p, custom){ try { if (window.fbq) fbq(custom ? 'trackCustom' : 'track', ev, p || {}); } catch(e){} }
+  var LEAD_URL = 'https://script.google.com/macros/s/AKfycbz8xUIJ8YrLXVFKzgPBXhfmNEZqFhS63kKfnDR0XYoBi5QwZ9ReYlvoWMKQnTda4wtUJA/exec';
+  function fb(ev, p, custom, eid){ try { if (window.fbq) fbq(custom ? 'trackCustom' : 'track', ev, p || {}, eid ? { eventID: eid } : undefined); } catch(e){} }
   var fired = {}; function once(ev, p, custom){ if (fired[ev]) return; fired[ev] = 1; fb(ev, p, custom); }
   function ss(k, v){ try { if (v === undefined) return sessionStorage.getItem(k) || ''; sessionStorage.setItem(k, v); } catch(e){ return ''; } }
   var q = new URLSearchParams(location.search);
@@ -1222,13 +1222,14 @@ src="https://www.facebook.com/tr?id=1275246754532481&ev=PageView&noscript=1"
   document.addEventListener('click', function(e){ if (e.target.closest && e.target.closest('#qz .pc, #qz .opt')) once('QuizStart', {}, true); }, true);
   window.hbLead = function(d){
     var id = 'lead_' + Date.now() + '_' + Math.random().toString(36).slice(2, 8);
-    fb('Lead', { content_name: 'Bathroom quiz', content_category: d.project, predicted_price: d.price, currency: 'USD' });
+    try { var ph = String(d.phone).replace(/\D/g, ''); if (ph.length === 10) ph = '1' + ph; var nm = String(d.name).trim().toLowerCase().split(/\s+/); var ud = { ph: ph, fn: nm[0] || '', country: 'us', st: 'oh', ct: 'cleveland' }; if (nm.length > 1) ud.ln = nm[nm.length - 1]; if (window.fbq) fbq('init', '1275246754532481', ud); } catch(e){}
+    fb('Lead', { content_name: 'Bathroom quiz', content_category: d.project, predicted_price: d.price, currency: 'USD' }, false, id);
     fb('QuizComplete', { project: d.project, size: d.size, style: d.style, start: d.start }, true);
     if (/asap|1–3/i.test(d.start)) fb('HotLead', { start: d.start }, true);
     if (/full/i.test(d.project)) fb('FullRemodelLead', {}, true);
     d.source = 'Quiz'; d.page = location.href; d.event_id = id;
     ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid'].forEach(function(k){ d[k] = ss('hb_' + k); });
-    if (LEAD_URL.indexOf('http') === 0){ try { fetch(LEAD_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(d), keepalive: true }); } catch(e){} }
+    if (LEAD_URL.indexOf('http') === 0){ try { fetch(LEAD_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(d), keepalive: true }).catch(function(){}); } catch(e){} }
   };
 
   /* clicks */
