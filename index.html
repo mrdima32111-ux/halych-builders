@@ -1052,10 +1052,10 @@ src="https://www.facebook.com/tr?id=1275246754532481&ev=PageView&noscript=1"
 
   /* every "#quiz" button opens the quiz in a popup instead of scrolling */
   (function(){
-    var qm = $('#qm'), qw = $('.qwrap'), home = document.createComment('qwrap-home'); qw.parentNode.insertBefore(home, qw);
-    function openQ(){ if (!qm.hidden) return; qm.appendChild(qw); qw.style.opacity = 1; qw.style.transform = 'none'; qm.hidden = false; document.body.classList.add('qm-on'); qm.scrollTop = 0;
+    var qm = $('#qm'), qw = $('.qwrap'), home = document.createElement('div'); home.className = 'qhome'; qw.parentNode.insertBefore(home, qw);
+    function openQ(){ if (!qm.hidden) return; home.style.height = qw.offsetHeight + 'px'; qm.appendChild(qw); qw.style.opacity = 1; qw.style.transform = 'none'; qm.hidden = false; document.body.classList.add('qm-on'); qm.scrollTop = 0;
       if (A) gsap.fromTo(qw, { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: .6, ease: 'expo.out', clearProps: 'transform' }); }
-    function closeQ(){ if (qm.hidden) return; qm.hidden = true; document.body.classList.remove('qm-on'); home.parentNode.insertBefore(qw, home.nextSibling); if (G) ScrollTrigger.refresh(); }
+    function closeQ(){ if (qm.hidden) return; qm.hidden = true; document.body.classList.remove('qm-on'); home.parentNode.insertBefore(qw, home.nextSibling); home.style.height = '0px'; if (G) ScrollTrigger.refresh(); }
     window.hbOpenQuiz = openQ;
     document.addEventListener('click', function(e){ var a = e.target.closest && e.target.closest('a[href="#quiz"]'); if (!a || a.closest('#quiz')) return; e.preventDefault(); e.stopPropagation();
       var mn = $('#mnav'); if (mn) mn.hidden = true; var ex = $('#exit'); if (ex) ex.hidden = true; openQ(); }, true);
