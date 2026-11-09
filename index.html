@@ -646,6 +646,14 @@ body.qm-on{overflow:hidden}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition-duration:.01ms !important}}
 </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17938438671"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-17938438671', { allow_enhanced_conversions: true });
+</script>
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -1246,7 +1254,7 @@ src="https://www.facebook.com/tr?id=1275246754532481&ev=PageView&noscript=1"
   var fired = {}; function once(ev, p, custom){ if (fired[ev]) return; fired[ev] = 1; fb(ev, p, custom); }
   function ss(k, v){ try { if (v === undefined) return sessionStorage.getItem(k) || ''; sessionStorage.setItem(k, v); } catch(e){ return ''; } }
   var q = new URLSearchParams(location.search);
-  ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid'].forEach(function(k){ if (q.get(k)) ss('hb_' + k, q.get(k)); });
+  ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid','gclid','gbraid','wbraid'].forEach(function(k){ if (q.get(k)) ss('hb_' + k, q.get(k)); });
 
   /* quiz funnel */
   var stepNames = ['Type','Size','Style','Start','Contact'];
@@ -1255,12 +1263,13 @@ src="https://www.facebook.com/tr?id=1275246754532481&ev=PageView&noscript=1"
   window.hbLead = function(d){
     var id = 'lead_' + Date.now() + '_' + Math.random().toString(36).slice(2, 8);
     try { var ph = String(d.phone).replace(/\D/g, ''); if (ph.length === 10) ph = '1' + ph; var nm = String(d.name).trim().toLowerCase().split(/\s+/); var ud = { ph: ph, fn: nm[0] || '', country: 'us', st: 'oh', ct: 'cleveland' }; if (nm.length > 1) ud.ln = nm[nm.length - 1]; if (window.fbq) fbq('init', '1275246754532481', ud); } catch(e){}
+    try { if (window.gtag){ var gp = String(d.phone).replace(/\D/g, ''); if (gp.length === 10) gp = '1' + gp; var gn = String(d.name).trim().split(/\s+/); var gu = { phone_number: '+' + gp, address: { first_name: gn[0] || '', country: 'US', region: 'OH', city: 'Cleveland' } }; if (gn.length > 1) gu.address.last_name = gn[gn.length - 1]; gtag('set', 'user_data', gu); gtag('event', 'conversion', { send_to: 'AW-17938438671/cq-dCMyCjbUdEI-02-lC', value: 1.0, currency: 'USD', transaction_id: id }); } } catch(e){}
     fb('Lead', { content_name: 'Bathroom quiz', content_category: d.project, predicted_price: d.price, currency: 'USD' }, false, id);
     fb('QuizComplete', { project: d.project, size: d.size, style: d.style, start: d.start }, true);
     if (/asap|1–3/i.test(d.start)) fb('HotLead', { start: d.start }, true);
     if (/full/i.test(d.project)) fb('FullRemodelLead', {}, true);
     d.source = 'Quiz'; d.page = location.href; d.event_id = id;
-    ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid'].forEach(function(k){ d[k] = ss('hb_' + k); });
+    ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid','gclid','gbraid','wbraid'].forEach(function(k){ d[k] = ss('hb_' + k); });
     if (LEAD_URL.indexOf('http') === 0){ try { fetch(LEAD_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(d), keepalive: true }).catch(function(){}); } catch(e){} }
   };
 
@@ -1268,7 +1277,7 @@ src="https://www.facebook.com/tr?id=1275246754532481&ev=PageView&noscript=1"
   document.addEventListener('click', function(e){
     var t = e.target.closest ? e.target.closest('a,button') : null; if (!t) return;
     var h = t.getAttribute('href') || '';
-    if (h.indexOf('tel:') === 0){ fb('Contact', { method: 'phone' }); fb('PhoneClick', { place: t.closest('.mbar') ? 'mobile_bar' : t.closest('.hdr') ? 'header' : 'page' }, true); }
+    if (h.indexOf('tel:') === 0){ try { if (window.gtag) gtag('event', 'conversion', { send_to: 'AW-17938438671/cq-dCMyCjbUdEI-02-lC', value: 1.0, currency: 'USD' }); } catch(e){} fb('Contact', { method: 'phone' }); fb('PhoneClick', { place: t.closest('.mbar') ? 'mobile_bar' : t.closest('.hdr') ? 'header' : 'page' }, true); }
     else if (h.indexOf('sms:') === 0){ fb('Contact', { method: 'sms' }); fb('SMSClick', { place: t.id === 'exitGo' ? 'exit_popup' : t.closest('#ce') ? 'estimate' : 'page' }, true); }
     else if (h === '#quiz'){ fb('CTAGetPrice', { place: t.closest('.hdr') ? 'header' : t.closest('.mbar') ? 'mobile_bar' : t.closest('.hero') ? 'hero' : 'page' }, true); }
     if (t.id === 'exitGo') fb('ExitPopupClick', {}, true);
