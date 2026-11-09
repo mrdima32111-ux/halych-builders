@@ -703,6 +703,24 @@ src="https://www.facebook.com/tr?id=1275246754532481&ev=PageView&noscript=1"
         </div>
         <p class="smsl h-in">Answer 5 quick questions and see your price range <a href="#quiz">in 60 seconds</a>.</p>
       </div>
+      <script>
+      /* landing variant per Google Ads ad group: ?v=tub | ?v=shower | ?v=remodel */
+      (function(){ try {
+        var v = (new URLSearchParams(location.search).get('v') || '').toLowerCase();
+        var V = {
+          tub: { kick: 'Cleveland, OH · Tub to shower conversions', h1: 'Tub to shower conversion <span class="g">in&nbsp;Cleveland</span>', sub: 'Swap your old tub for a walk-in shower with a low step-in, a seat and grab bars. Our own crew, with your price and timeline locked in writing.', cta: 'Get my shower price', type: 'Tub-to-shower' },
+          shower: { kick: 'Cleveland, OH · Shower remodel and replacement', h1: 'Shower remodel <span class="g">and&nbsp;replacement</span>', sub: 'New tile shower, glass and fixtures. We remove the old one, waterproof, tile and clean up every day. Price and timeline locked in writing.', cta: 'Get my shower price', type: 'Shower update' },
+          remodel: { kick: 'Cleveland, OH · Bathroom remodeling contractor', h1: 'Bathroom remodeling <span class="g">from&nbsp;$8,000</span>', sub: 'Demo, tile, shower or tub, vanity and lighting. Our own crew, with your price and timeline locked in writing.', cta: 'Get my bathroom price', type: 'Full remodel' }
+        }[v];
+        if (!V) return;
+        var hero = document.getElementById('hero');
+        hero.querySelector('.kick').innerHTML = '<i></i>' + V.kick + ' · 9% off contracts signed by Nov 30';
+        hero.querySelector('h1').innerHTML = V.h1;
+        hero.querySelector('.hero-sub').textContent = V.sub;
+        var b = hero.querySelector('.ctas .btn'); b.firstChild.nodeValue = V.cta + ' ';
+        window.hbPre = V.type; document.documentElement.setAttribute('data-v', v);
+      } catch(e){} })();
+      </script>
       <div class="hero-r">
         <div class="fly" id="fly" aria-label="Bathroom design ideas"><div class="col"><div class="trk"><img src="img/r65.jpg" width="1200" height="801" alt=""><img src="img/r04.jpg" width="1200" height="1500" alt=""><img src="img/g-walkin-black.jpg" width="1600" height="1067" alt=""><img src="img/r86.jpg" width="1067" height="1600" alt=""><img src="img/r12.jpg" width="987" height="1600" alt=""><img src="img/r72.jpg" width="1067" height="1600" alt=""><img src="img/g-freestanding.jpg" width="1600" height="1068" alt=""><img src="img/r31.jpg" width="1200" height="1599" alt=""><img src="img/r65.jpg" width="1200" height="801" alt=""><img src="img/r04.jpg" width="1200" height="1500" alt=""><img src="img/g-walkin-black.jpg" width="1600" height="1067" alt=""><img src="img/r86.jpg" width="1067" height="1600" alt=""><img src="img/r12.jpg" width="987" height="1600" alt=""><img src="img/r72.jpg" width="1067" height="1600" alt=""><img src="img/g-freestanding.jpg" width="1600" height="1068" alt=""><img src="img/r31.jpg" width="1200" height="1599" alt=""></div></div><div class="col"><div class="trk"><img src="img/r52.jpg" width="1200" height="900" alt=""><img src="img/r00.jpg" width="1200" height="1200" alt=""><img src="img/r25.jpg" width="1067" height="1600" alt=""><img src="img/g-subway-bench.jpg" width="1600" height="1067" alt=""><img src="img/r80.jpg" width="1200" height="1178" alt=""><img src="img/r63.jpg" width="1067" height="1600" alt=""><img src="img/r05.jpg" width="1200" height="1200" alt=""><img src="img/r45.jpg" width="1069" height="1600" alt=""><img src="img/r52.jpg" width="1200" height="900" alt=""><img src="img/r00.jpg" width="1200" height="1200" alt=""><img src="img/r25.jpg" width="1067" height="1600" alt=""><img src="img/g-subway-bench.jpg" width="1600" height="1067" alt=""><img src="img/r80.jpg" width="1200" height="1178" alt=""><img src="img/r63.jpg" width="1067" height="1600" alt=""><img src="img/r05.jpg" width="1200" height="1200" alt=""><img src="img/r45.jpg" width="1069" height="1600" alt=""></div></div><div class="col"><div class="trk"><img src="img/r33.jpg" width="1200" height="801" alt=""><img src="img/r14.jpg" width="1067" height="1600" alt=""><img src="img/g-double-vanity.jpg" width="1600" height="1067" alt=""><img src="img/r06.jpg" width="1067" height="1600" alt=""><img src="img/r17.jpg" width="1200" height="1200" alt=""><img src="img/g-marble-walkin.jpg" width="1600" height="1068" alt=""><img src="img/r23.jpg" width="1200" height="801" alt=""><img src="img/g-glass-shower.jpg" width="1600" height="1068" alt=""><img src="img/r33.jpg" width="1200" height="801" alt=""><img src="img/r14.jpg" width="1067" height="1600" alt=""><img src="img/g-double-vanity.jpg" width="1600" height="1067" alt=""><img src="img/r06.jpg" width="1067" height="1600" alt=""><img src="img/r17.jpg" width="1200" height="1200" alt=""><img src="img/g-marble-walkin.jpg" width="1600" height="1068" alt=""><img src="img/r23.jpg" width="1200" height="801" alt=""><img src="img/g-glass-shower.jpg" width="1600" height="1068" alt=""></div></div></div>
       </div>
@@ -1142,6 +1160,8 @@ src="https://www.facebook.com/tr?id=1275246754532481&ev=PageView&noscript=1"
     chips(); upd(); if (key !== 'call') setTimeout(function(){ if (ok() && st.s < N - 1) go(st.s + 1); }, 380);
   }); });
   ['#fN','#fP'].forEach(function(s){ $(s).addEventListener('input', upd); });
+  if (window.hbPre){ var pb = $('#qz [data-k="type"][data-v="' + window.hbPre + '"]'); if (pb){ pb.classList.add('on'); st.type = window.hbPre; side(pb.getAttribute('data-img') || st.type); chips(); upd(); } }
+
   $('#qzNext').addEventListener('click', function(){ if (!ok()){ if (st.s === 4){ $('#fN').dataset.t = 1; $('#fP').dataset.t = 1; showErr(true); } if (G) gsap.fromTo('#qz', { x: -10 }, { x: 0, duration: .6, ease: 'elastic.out(1,.3)' }); return; } go(st.s + 1); });
   $('#qzBack').addEventListener('click', function(){ if (st.s > 0) go(st.s - 1); });
   $('#qz').addEventListener('submit', function(e){ e.preventDefault(); });
