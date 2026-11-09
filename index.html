@@ -638,6 +638,23 @@ main{padding-bottom:var(--sec)}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition-duration:.01ms !important}}
 </style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1275246754532481');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1275246754532481&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 </head>
 <body>
 
@@ -1069,14 +1086,14 @@ main{padding-bottom:var(--sec)}
   function ok(){ if (st.s === 0) return !!st.type; if (st.s === 1) return !!st.size; if (st.s === 2) return !!st.style; if (st.s === 3) return !!st.when; if (st.s === 4) return $('#fN').value.trim() && $('#fP').value.trim().length >= 7 && !!st.call; return true; }
   function upd(){ $('#qzNext').style.opacity = ok() ? 1 : .45; }
   function go(i){
-    qs[st.s].hidden = true; st.s = i; qs[i].hidden = false;
+    qs[st.s].hidden = true; st.s = i; qs[i].hidden = false; if (window.hbStep) hbStep(i);
     if (A) gsap.fromTo(qs[i].querySelectorAll('h3,.hint,.pc,.opt,.fl,.res > *'), { y: 26, opacity: 0 }, { y: 0, opacity: 1, duration: .6, stagger: .05, ease: 'expo.out' });
     bars.forEach(function(b, k){ b.classList.toggle('on', k <= Math.min(i, N - 1)); });
     $('#qzN').innerHTML = i < N ? 'Question <b>' + (i + 1) + '</b> of ' + N : '<b>Done</b>';
     $('#qBig').innerHTML = (i < N ? '0' + (i + 1) : '✓') + '<small> / 05</small>';
     $('#qzBack').disabled = i === 0; $('#qzNav').hidden = i === N;
     $('#qzNextT').textContent = i === N - 1 ? 'See my price' : 'Next';
-    if (i === N){ try { fetch('https://formsubmit.co/ajax/sales@halychbuilders.com', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify({ _subject: 'New bathroom lead: ' + $('#fN').value.trim(), _template: 'table', _captcha: 'false', Name: $('#fN').value.trim(), Phone: $('#fP').value.trim(), Project: st.type || '', Size: labels[st.size] || '', Style: st.style || '', Start: st.when || '', 'Best time to call': st.call || '', 'Price shown': PRICE[st.size] || PRICE.m, Page: location.href }) }).catch(function(){}); } catch(e){} $('#rng').textContent = PRICE[st.size] || PRICE.m; var n = $('#fN').value.trim().split(' ')[0]; $('#resTxt').textContent = 'Thanks, ' + n + '! We\'ll confirm the exact price after a free in-home visit. Best time to reach you: ' + (st.call || '').toLowerCase() + '.'; if (A) gsap.from('#rng', { scale: .6, opacity: 0, duration: .9, ease: 'back.out(1.6)' }); }
+    if (i === N){ if (window.hbLead) hbLead({ name: $('#fN').value.trim(), phone: $('#fP').value.trim(), project: st.type || '', size: labels[st.size] || '', style: st.style || '', start: st.when || '', call: st.call || '', price: PRICE[st.size] || PRICE.m }); try { fetch('https://formsubmit.co/ajax/sales@halychbuilders.com', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify({ _subject: 'New bathroom lead: ' + $('#fN').value.trim(), _template: 'table', _captcha: 'false', Name: $('#fN').value.trim(), Phone: $('#fP').value.trim(), Project: st.type || '', Size: labels[st.size] || '', Style: st.style || '', Start: st.when || '', 'Best time to call': st.call || '', 'Price shown': PRICE[st.size] || PRICE.m, Page: location.href }) }).catch(function(){}); } catch(e){} $('#rng').textContent = PRICE[st.size] || PRICE.m; var n = $('#fN').value.trim().split(' ')[0]; $('#resTxt').textContent = 'Thanks, ' + n + '! We\'ll confirm the exact price after a free in-home visit. Best time to reach you: ' + (st.call || '').toLowerCase() + '.'; if (A) gsap.from('#rng', { scale: .6, opacity: 0, duration: .9, ease: 'back.out(1.6)' }); }
     upd();
   }
   $$('#qz .pc, #qz .opt').forEach(function(b){ b.addEventListener('click', function(){
@@ -1187,6 +1204,65 @@ main{padding-bottom:var(--sec)}
 
   addEventListener('load', function(){ ScrollTrigger.refresh(); });
   var rT; $$('img').forEach(function(im){ if (!im.complete) im.addEventListener('load', function(){ clearTimeout(rT); rT = setTimeout(function(){ ScrollTrigger.refresh(); }, 250); }); });
+})();
+</script>
+<script>
+/* Leads (Google Sheet + Telegram) and Meta Pixel conversions */
+(function(){
+  var LEAD_URL = '__LEAD_URL__';
+  function fb(ev, p, custom){ try { if (window.fbq) fbq(custom ? 'trackCustom' : 'track', ev, p || {}); } catch(e){} }
+  var fired = {}; function once(ev, p, custom){ if (fired[ev]) return; fired[ev] = 1; fb(ev, p, custom); }
+  function ss(k, v){ try { if (v === undefined) return sessionStorage.getItem(k) || ''; sessionStorage.setItem(k, v); } catch(e){ return ''; } }
+  var q = new URLSearchParams(location.search);
+  ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid'].forEach(function(k){ if (q.get(k)) ss('hb_' + k, q.get(k)); });
+
+  /* quiz funnel */
+  var stepNames = ['Type','Size','Style','Start','Contact'];
+  window.hbStep = function(i){ if (i >= 1 && i <= 4){ once('QuizStep' + (i + 1), { step: i + 1, step_name: stepNames[i] }, true); if (i === 4) once('QuizContactForm', {}, true); } };
+  document.addEventListener('click', function(e){ if (e.target.closest && e.target.closest('#qz .pc, #qz .opt')) once('QuizStart', {}, true); }, true);
+  window.hbLead = function(d){
+    var id = 'lead_' + Date.now() + '_' + Math.random().toString(36).slice(2, 8);
+    fb('Lead', { content_name: 'Bathroom quiz', content_category: d.project, predicted_price: d.price, currency: 'USD' });
+    fb('QuizComplete', { project: d.project, size: d.size, style: d.style, start: d.start }, true);
+    if (/asap|1–3/i.test(d.start)) fb('HotLead', { start: d.start }, true);
+    if (/full/i.test(d.project)) fb('FullRemodelLead', {}, true);
+    d.source = 'Quiz'; d.page = location.href; d.event_id = id;
+    ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid'].forEach(function(k){ d[k] = ss('hb_' + k); });
+    if (LEAD_URL.indexOf('http') === 0){ try { fetch(LEAD_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(d), keepalive: true }); } catch(e){} }
+  };
+
+  /* clicks */
+  document.addEventListener('click', function(e){
+    var t = e.target.closest ? e.target.closest('a,button') : null; if (!t) return;
+    var h = t.getAttribute('href') || '';
+    if (h.indexOf('tel:') === 0){ fb('Contact', { method: 'phone' }); fb('PhoneClick', { place: t.closest('.mbar') ? 'mobile_bar' : t.closest('.hdr') ? 'header' : 'page' }, true); }
+    else if (h.indexOf('sms:') === 0){ fb('Contact', { method: 'sms' }); fb('SMSClick', { place: t.id === 'exitGo' ? 'exit_popup' : t.closest('#ce') ? 'estimate' : 'page' }, true); }
+    else if (h === '#quiz'){ fb('CTAGetPrice', { place: t.closest('.hdr') ? 'header' : t.closest('.mbar') ? 'mobile_bar' : t.closest('.hero') ? 'hero' : 'page' }, true); }
+    if (t.id === 'exitGo') fb('ExitPopupClick', {}, true);
+    if (t.hasAttribute('data-film')){ var rv = /rev-/.test(t.getAttribute('data-src') || ''); fb(rv ? 'VideoReviewPlay' : 'OwnerVideoPlay', { video: t.getAttribute('data-src') || 'vid/film.mp4' }, true); once('VideoPlay', {}, true); }
+    if (t.closest('#flt')) fb('GalleryFilter', { filter: (t.textContent || '').replace(/\d+/g, '').trim() }, true);
+    if (t.closest('#gal')) fb('GalleryPhotoOpen', { photo: (t.querySelector('.cap b') || {}).textContent || '' }, true);
+    if (t.closest('#gmore')) once('GalleryShowMore', {}, true);
+    if (t.closest('#faqs')) fb('FAQOpen', { question: (t.textContent || '').trim().slice(0, 80) }, true);
+  }, true);
+  document.addEventListener('pointerdown', function(e){ if (e.target.closest && e.target.closest('#ba0, #ba1')) once('BeforeAfterSlider', {}, true); }, true);
+
+  /* exit popup shown */
+  var ex = document.getElementById('exit');
+  if (ex && window.MutationObserver) new MutationObserver(function(){ if (!ex.hidden) once('ExitPopupShown', {}, true); }).observe(ex, { attributes: true, attributeFilter: ['hidden'] });
+
+  /* sections seen */
+  var views = { '#quiz': ['ViewContent', 0], '#ba': ['ViewBeforeAfter', 1], '.case': ['ViewCaseStudy', 1], '#gallery': ['ViewGallery', 1], '#cmp': ['ViewPricing', 1], '#how': ['ViewProcess', 1], '#reviews': ['ViewReviews', 1], '#faq': ['ViewFAQ', 1], '#fin': ['ViewFinalCTA', 1] };
+  if (window.IntersectionObserver){
+    var io = new IntersectionObserver(function(es){ es.forEach(function(en){ if (!en.isIntersecting) return; var v = views[en.target.__k]; if (v[0] === 'ViewContent') once('ViewContent', { content_name: 'Bathroom quiz', content_category: 'Bathroom remodel' }); else once(v[0], {}, true); io.unobserve(en.target); }); }, { threshold: .35 });
+    Object.keys(views).forEach(function(k){ var el = document.querySelector(k); if (el){ el.__k = k; io.observe(el); } });
+  }
+
+  /* scroll depth and time on page */
+  addEventListener('scroll', function(){ var h = document.documentElement.scrollHeight - innerHeight; if (h <= 0) return; var p = scrollY / h; if (p > .25) once('Scroll25', {}, true); if (p > .5) once('Scroll50', {}, true); if (p > .75) once('Scroll75', {}, true); if (p > .95) once('Scroll100', {}, true); }, { passive: true });
+  setTimeout(function(){ once('Engaged30s', {}, true); }, 30000);
+  setTimeout(function(){ once('Engaged60s', {}, true); }, 60000);
+  setTimeout(function(){ once('Engaged3min', {}, true); }, 180000);
 })();
 </script>
 </body>
