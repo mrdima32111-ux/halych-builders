@@ -232,6 +232,7 @@ main{padding-bottom:var(--sec)}
 .fl input{width:100%;height:52px;background:var(--surface-raised);border:0;border-radius:var(--r-sm);box-shadow:inset 0 0 0 1px var(--border);color:var(--text);font-size:16px;padding:0 var(--s3);outline:0;transition:box-shadow .2s}
 .fl input:focus{box-shadow:inset 0 0 0 1.5px var(--accent)}
 .fl input.bad{box-shadow:inset 0 0 0 1.5px #E5484D}
+.trust{font-size:14px;line-height:1.45;opacity:.8;margin:2px 0 14px}.opt-l{font-weight:400;opacity:.6}
 .fl .fe{display:block;min-height:18px;font-size:13px;line-height:18px;color:#E5484D;margin-top:6px}
 .qz-nav{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:var(--s5)}
 .qz-back{font-size:14px;line-height:20px;font-weight:600;color:var(--text-muted)}
@@ -787,8 +788,9 @@ src="https://www.facebook.com/tr?id=1275246754532481&ev=PageView&noscript=1"
         </div></div>
 
         <div class="qs" data-s="4" hidden><h3>Where should we send your price?</h3><p class="hint">Your price range shows up right after you submit</p>
-          <div class="fgrid"><div class="fl"><label for="fN">Name</label><input id="fN" autocomplete="name" placeholder="Jane Smith" maxlength="40"><span class="fe" id="fNe"></span></div><div class="fl"><label for="fP">Phone</label><input id="fP" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="(216) 555-0142" maxlength="16"><span class="fe" id="fPe"></span></div></div>
-          <div class="fl"><label>Best time to call?</label><div class="opts">
+          <div class="fgrid"><div class="fl"><label for="fN">Name</label><input id="fN" autocomplete="name" placeholder="Jane Smith" maxlength="40"><span class="fe" id="fNe"></span></div><div class="fl"><label for="fP">Phone</label><input id="fP" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="(216) 555-0142" maxlength="22"><span class="fe" id="fPe"></span></div></div>
+          <p class="trust">🔒 No spam, no robocalls. One call or text from our team with your exact price. Your number is never shared.</p>
+          <div class="fl"><label>Best time to call? <small class="opt-l">(optional)</small></label><div class="opts">
             <button class="opt" type="button" data-k="call" data-v="Morning"><b>Morning</b><small>8 AM–12 PM</small></button>
             <button class="opt" type="button" data-k="call" data-v="Afternoon"><b>Afternoon</b><small>12–5 PM</small></button>
             <button class="opt" type="button" data-k="call" data-v="Evening"><b>Evening</b><small>5–8 PM</small></button>
@@ -1132,7 +1134,7 @@ src="https://www.facebook.com/tr?id=1275246754532481&ev=PageView&noscript=1"
   var labels = { s: 'Small', m: 'Standard', l: 'Large', m2: 'Size: we\'ll measure' };
   function side(k){ var hit = sideImgs.filter(function(im){ return im.getAttribute('data-k') === k; })[0]; if (!hit) return; sideImgs.forEach(function(im){ im.classList.toggle('on', im === hit); }); }
   function chips(){ var c = $('#chips'); c.innerHTML = ''; [st.type, labels[st.size], st.style, st.when].forEach(function(t){ if (!t) return; var s = document.createElement('span'); s.textContent = t; c.appendChild(s); }); }
-  function vName(){ var v = $('#fN').value.trim(); return /^[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ'.\- ]{1,39}$/.test(v) && /[aeiouyAEIOUY]/.test(v) && !/(.)\1\1/i.test(v); }
+  function vName(){ var v = $('#fN').value.trim(); return /^[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ'.\- ]{1,39}$/.test(v) && !/(.)\1\1\1/i.test(v); }
   function digits(){ var d = $('#fP').value.replace(/\D/g, ''); if (d.length === 11 && d[0] === '1') d = d.slice(1); return d; }
   function vPhone(){ var d = digits(); if (!/^[2-9]\d{2}[2-9]\d{6}$/.test(d)) return false; if (/^(\d)\1{9}$/.test(d)) return false; if (d.slice(3, 6) === '555' && /^01\d\d$/.test(d.slice(6))) return false; if (/^[2-9]11$/.test(d.slice(0, 3)) || /^[2-9]11$/.test(d.slice(3, 6))) return false; if (d === '1234567890' || d.slice(3) === '1234567') return false; return true; }
   function showErr(force){ var nOk = vName(), pOk = vPhone(), n = $('#fN'), ph = $('#fP');
@@ -1141,7 +1143,7 @@ src="https://www.facebook.com/tr?id=1275246754532481&ev=PageView&noscript=1"
   $('#fP').addEventListener('input', function(){ var d = this.value.replace(/\D/g, ''); if (d.length > 10 && d[0] === '1') d = d.slice(1); d = d.slice(0, 10); this.value = d.length > 6 ? '(' + d.slice(0, 3) + ') ' + d.slice(3, 6) + '-' + d.slice(6) : d.length > 3 ? '(' + d.slice(0, 3) + ') ' + d.slice(3) : d.length ? '(' + d : ''; if (this.dataset.t) showErr(); });
   $('#fN').addEventListener('input', function(){ this.value = this.value.replace(/[^A-Za-zÀ-ÿ'.\- ]/g, ''); if (this.dataset.t) showErr(); });
   ['#fN', '#fP'].forEach(function(q){ $(q).addEventListener('blur', function(){ if (this.value.trim()){ this.dataset.t = 1; showErr(); } }); });
-  function ok(){ if (st.s === 0) return !!st.type; if (st.s === 1) return !!st.size; if (st.s === 2) return !!st.style; if (st.s === 3) return !!st.when; if (st.s === 4) return vName() && vPhone() && !!st.call; return true; }
+  function ok(){ if (st.s === 0) return !!st.type; if (st.s === 1) return !!st.size; if (st.s === 2) return !!st.style; if (st.s === 3) return !!st.when; if (st.s === 4) return vName() && vPhone(); return true; }
   function upd(){ $('#qzNext').style.opacity = ok() ? 1 : .45; }
   function go(i){
     qs[st.s].hidden = true; st.s = i; qs[i].hidden = false; if (window.hbStep) hbStep(i);
@@ -1151,7 +1153,7 @@ src="https://www.facebook.com/tr?id=1275246754532481&ev=PageView&noscript=1"
     $('#qBig').innerHTML = (i < N ? '0' + (i + 1) : '✓') + '<small> / 05</small>';
     $('#qzBack').disabled = i === 0; $('#qzNav').hidden = i === N;
     $('#qzNextT').textContent = i === N - 1 ? 'See my price' : 'Next';
-    if (i === N){ if (window.hbLead) hbLead({ name: $('#fN').value.trim(), phone: $('#fP').value.trim(), project: st.type || '', size: labels[st.size] || '', style: st.style || '', start: st.when || '', call: st.call || '', price: PRICE[st.size] || PRICE.m }); try { fetch('https://formsubmit.co/ajax/sales@halychbuilders.com', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify({ _subject: 'New bathroom lead: ' + $('#fN').value.trim(), _template: 'table', _captcha: 'false', Name: $('#fN').value.trim(), Phone: $('#fP').value.trim(), Project: st.type || '', Size: labels[st.size] || '', Style: st.style || '', Start: st.when || '', 'Best time to call': st.call || '', 'Price shown': PRICE[st.size] || PRICE.m, Page: location.href }) }).catch(function(){}); } catch(e){} $('#rng').textContent = PRICE[st.size] || PRICE.m; var n = $('#fN').value.trim().split(' ')[0]; $('#resTxt').textContent = 'Thanks, ' + n + '! We\'ll confirm the exact price after a free in-home visit. Best time to reach you: ' + (st.call || '').toLowerCase() + '.'; if (A) gsap.from('#rng', { scale: .6, opacity: 0, duration: .9, ease: 'back.out(1.6)' }); }
+    if (i === N){ if (window.hbLead) hbLead({ name: $('#fN').value.trim(), phone: $('#fP').value.trim(), project: st.type || '', size: labels[st.size] || '', style: st.style || '', start: st.when || '', call: st.call || '', price: PRICE[st.size] || PRICE.m }); try { fetch('https://formsubmit.co/ajax/sales@halychbuilders.com', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify({ _subject: 'New bathroom lead: ' + $('#fN').value.trim(), _template: 'table', _captcha: 'false', Name: $('#fN').value.trim(), Phone: $('#fP').value.trim(), Project: st.type || '', Size: labels[st.size] || '', Style: st.style || '', Start: st.when || '', 'Best time to call': st.call || '', 'Price shown': PRICE[st.size] || PRICE.m, Page: location.href }) }).catch(function(){}); } catch(e){} $('#rng').textContent = PRICE[st.size] || PRICE.m; var n = $('#fN').value.trim().split(' ')[0]; $('#resTxt').textContent = 'Thanks, ' + n + '! We\'ll confirm the exact price after a free in-home visit. ' + (st.call ? 'Best time to reach you: ' + st.call.toLowerCase() + '.' : 'We will reach out shortly.'); if (A) gsap.from('#rng', { scale: .6, opacity: 0, duration: .9, ease: 'back.out(1.6)' }); }
     upd();
   }
   $$('#qz .pc, #qz .opt').forEach(function(b){ b.addEventListener('click', function(){
