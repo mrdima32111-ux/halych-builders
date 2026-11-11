@@ -1082,6 +1082,7 @@ src="https://www.facebook.com/tr?id=1275246754532481&ev=PageView&noscript=1"
   (function(){
     var qm = $('#qm'), qw = $('.qwrap'), home = document.createElement('div'); home.className = 'qhome'; qw.parentNode.insertBefore(home, qw);
     function openQ(){ if (!qm.hidden) return; home.style.height = qw.offsetHeight + 'px'; qm.appendChild(qw); qw.style.opacity = 1; qw.style.transform = 'none'; qm.hidden = false; document.body.classList.add('qm-on'); qm.scrollTop = 0;
+      if (G){ var cs = qw.querySelectorAll('.pc, .opt'); gsap.killTweensOf(cs); gsap.set(cs, { opacity: 1, y: 0, scale: 1, clearProps: 'transform' }); if (A) gsap.fromTo(qw.querySelectorAll('.qs:not([hidden]) .pc, .qs:not([hidden]) .opt'), { y: 26, opacity: 0 }, { y: 0, opacity: 1, duration: .6, stagger: .05, ease: 'expo.out', delay: .15 }); }
       if (A) gsap.fromTo(qw, { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: .6, ease: 'expo.out', clearProps: 'transform' }); }
     function closeQ(){ if (qm.hidden) return; qm.hidden = true; document.body.classList.remove('qm-on'); home.parentNode.insertBefore(qw, home.nextSibling); home.style.height = '0px'; if (G) ScrollTrigger.refresh(); }
     window.hbOpenQuiz = openQ;
